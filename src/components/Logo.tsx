@@ -1,31 +1,35 @@
+export function LogoMark({ size = 36 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <defs>
+        <linearGradient id="vx-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="var(--color-accent)" />
+          <stop offset="1" stopColor="var(--color-accent-secondary)" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M20 25 L60 100 L100 25 L78 25 L60 62 L42 25 Z"
+        fill="url(#vx-grad)"
+      />
+      <path
+        d="M60 100 L60 62 L42 25 L20 25 Z"
+        fill="var(--color-accent)"
+        opacity="0.35"
+      />
+    </svg>
+  );
+}
+
 export function Logo({ withTagline = false }: { withTagline?: boolean }) {
   return (
     <span className="inline-flex items-center gap-1u">
-      <svg
-        width="36"
-        height="36"
-        viewBox="0 0 120 120"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        <polyline
-          points="25,90 60,30 95,90"
-          fill="none"
-          stroke="var(--color-accent)"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <line
-          x1="60"
-          y1="30"
-          x2="60"
-          y2="90"
-          stroke="var(--color-accent-secondary)"
-          strokeWidth="5"
-        />
-        <circle cx="60" cy="30" r="8" fill="var(--color-accent-secondary)" />
-      </svg>
+      <LogoMark />
       <span className="flex flex-col leading-none">
         <span className="font-heading font-bold tracking-widest text-text-primary">
           VERTAXO

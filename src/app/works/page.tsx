@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Section, CtaBlock } from "@/components/sections";
+import { Section, CtaBlock, PageHeader } from "@/components/sections";
 import { Card } from "@/components/Card";
 import { fetchWorks } from "@/lib/queries";
 import { SITE_URL } from "@/lib/site";
@@ -34,11 +34,11 @@ export default async function WorksPage({
   return (
     <>
       <Section>
-        <h1 className="text-3xl md:text-5xl font-bold mb-2u">Наши работы</h1>
-        <p className="text-metal max-w-prose mb-4u">
-          Реализованные проекты по трём направлениям: компьютерная помощь,
-          3D-печать и инженерные разработки.
-        </p>
+        <PageHeader
+          tag="ПОРТФОЛИО"
+          title="Наши работы"
+          text="Реализованные проекты по трём направлениям: компьютерная помощь, 3D-печать и инженерные разработки."
+        />
 
         <nav aria-label="Фильтр по категориям" className="flex flex-wrap gap-1u mb-4u">
           {categories.map((c) => (
@@ -77,10 +77,16 @@ export default async function WorksPage({
             ))}
           </div>
         ) : (
-          <p className="text-metal">
-            Раздел наполняется. Расскажите о вашей задаче через форму ниже —
-            возможно, следующий проект в портфолио будет вашим.
-          </p>
+          <div className="relative overflow-hidden bg-surface border border-metal/20 rounded-card p-4u">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 blueprint-grid opacity-40"
+            />
+            <p className="relative text-metal max-w-prose">
+              Раздел наполняется. Расскажите о вашей задаче через форму ниже —
+              возможно, следующий проект в портфолио будет вашим.
+            </p>
+          </div>
         )}
       </Section>
 

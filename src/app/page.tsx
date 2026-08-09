@@ -121,12 +121,6 @@ export default function HomePage() {
       <Section>
         <SectionTitle index={1}>Направления</SectionTitle>
         <ServiceBanners items={services} />
-        <div className="flex flex-wrap gap-2u mt-4u">
-          <ButtonLink href="#lead">Получить консультацию</ButtonLink>
-          <ButtonLink href="#lead" variant="secondary">
-            Оставить заявку
-          </ButtonLink>
-        </div>
       </Section>
 
       <Section>
@@ -156,8 +150,20 @@ export default function HomePage() {
 
       <Section>
         <SectionTitle index={7}>О компании</SectionTitle>
-        <div className="grid gap-4u lg:grid-cols-[220px_1fr] items-start">
-          <div className="w-[220px] aspect-square rounded-card border border-metal/30 bg-surface flex flex-col items-center justify-center gap-2u text-center px-2u">
+        <div className="relative overflow-hidden rounded-card border border-metal/20 bg-surface p-3u md:p-4u grid gap-4u lg:grid-cols-[220px_1fr] items-start">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 blueprint-grid opacity-30"
+          />
+          <div className="relative w-[220px] max-w-full aspect-square rounded-card border border-dashed border-accent/40 bg-bg flex flex-col items-center justify-center gap-2u text-center px-2u">
+            <span
+              aria-hidden="true"
+              className="absolute top-0 left-0 h-2u w-2u border-t border-l border-accent-secondary/70"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 right-0 h-2u w-2u border-b border-r border-accent/70"
+            />
             <svg
               width="48"
               height="48"
@@ -170,11 +176,11 @@ export default function HomePage() {
               <circle cx="12" cy="8" r="4" />
               <path d="M4 20c0-4 3.5-7 8-7s8 3 8 7" />
             </svg>
-            <p className="text-metal text-xs">
+            <p className="text-metal text-xs font-mono">
               Фото Ильи появится здесь после согласования
             </p>
           </div>
-          <div>
+          <div className="relative">
             <h3 className="text-lg font-semibold mb-2u">Илья Петров</h3>
             <p className="text-metal max-w-prose">
               Основатель VERTAXO. Больше 10 лет работает на стыке IT,

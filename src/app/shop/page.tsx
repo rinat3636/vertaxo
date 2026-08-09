@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Section, CtaBlock } from "@/components/sections";
+import { Section, CtaBlock, PageHeader } from "@/components/sections";
 import { Card } from "@/components/Card";
 import { ButtonLink } from "@/components/Button";
 import { fetchProducts } from "@/lib/queries";
@@ -19,11 +19,11 @@ export default async function ShopPage() {
   return (
     <>
       <Section>
-        <h1 className="text-3xl md:text-5xl font-bold mb-2u">Магазин</h1>
-        <p className="text-metal max-w-prose mb-4u">
-          Готовые изделия и товары. Выберите товар и оставьте заявку — мы
-          свяжемся с вами для оформления заказа.
-        </p>
+        <PageHeader
+          tag="МАГАЗИН"
+          title="Магазин"
+          text="Готовые изделия и товары. Выберите товар и оставьте заявку — мы свяжемся с вами для оформления заказа."
+        />
 
         {products.length > 0 ? (
           <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
@@ -58,10 +58,16 @@ export default async function ShopPage() {
             ))}
           </div>
         ) : (
-          <p className="text-metal">
-            Каталог наполняется. Нужно что-то конкретное? Оставьте заявку через
-            форму ниже — изготовим под заказ.
-          </p>
+          <div className="relative overflow-hidden bg-surface border border-metal/20 rounded-card p-4u">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 blueprint-grid opacity-40"
+            />
+            <p className="relative text-metal max-w-prose">
+              Каталог наполняется. Нужно что-то конкретное? Оставьте заявку
+              через форму ниже — изготовим под заказ.
+            </p>
+          </div>
         )}
       </Section>
 
