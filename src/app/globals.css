@@ -64,3 +64,19 @@ h3 {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+@keyframes hero-scan {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.animate-hero-scan {
+  animation: hero-scan 6s ease-in-out infinite;
+}

@@ -138,7 +138,8 @@ export default function PrintingPage() {
         subtitle="Качественные изделия. Разработка индивидуальных моделей"
         image="/images/3d-printing.webp"
         imageAlt="3D-принтер печатает точную механическую деталь, видны слои филамента"
-        badge={{ value: stats[0].value, label: stats[0].label }}
+        tag="3D-ПЕЧАТЬ"
+        stats={stats}
         actions={<ButtonLink href="#lead">Оставить заявку</ButtonLink>}
       />
 

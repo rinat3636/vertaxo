@@ -106,7 +106,8 @@ export default function HomePage() {
         subtitle="Надёжность, качество и быстрые решения"
         image="/images/hero-main.webp"
         imageAlt="Индустриально-технологическая композиция: печатная плата, сопло 3D-принтера и чертёжная сетка в голубой подсветке"
-        badge={{ value: stats[0].value, label: stats[0].label }}
+        tag="ГЛАВНАЯ"
+        stats={stats}
         actions={
           <>
             <ButtonLink href="#lead">Получить консультацию</ButtonLink>

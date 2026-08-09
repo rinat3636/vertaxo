@@ -1,25 +1,25 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 
-function BlueprintOverlay() {
+function ScanlineGrid() {
   return (
     <svg
-      className="absolute inset-0 h-full w-full opacity-20 mix-blend-screen"
+      className="absolute inset-0 h-full w-full opacity-25"
       aria-hidden="true"
       preserveAspectRatio="xMidYMid slice"
-      viewBox="0 0 800 400"
+      viewBox="0 0 400 400"
     >
       <defs>
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <pattern id="hero-grid" width="20" height="20" patternUnits="userSpaceOnUse">
           <path
-            d="M40 0H0V40"
+            d="M20 0H0V20"
             fill="none"
             stroke="var(--color-accent)"
             strokeWidth="0.5"
           />
         </pattern>
       </defs>
-      <rect width="800" height="400" fill="url(#grid)" />
+      <rect width="400" height="400" fill="url(#hero-grid)" />
     </svg>
   );
 }
@@ -30,72 +30,119 @@ export function Hero({
   actions,
   image,
   imageAlt,
-  badge,
+  tag,
+  stats,
 }: {
   title: string;
   subtitle: string;
   actions?: ReactNode;
   image: string;
   imageAlt: string;
-  badge?: { value: string; label: string };
+  tag: string;
+  stats?: readonly { value: string; label: string }[];
 }) {
   return (
-    <div
-      className="relative overflow-hidden border-b border-metal/20 min-h-[560px] md:min-h-[680px] flex items-end"
-      style={{
-        clipPath:
-          "polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%)",
-      }}
-    >
-      <Image
-        src={image}
-        alt={imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/20"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/20 to-transparent"
-      />
-      <BlueprintOverlay />
-
-      {badge && (
-        <div className="hidden md:block absolute top-6u right-2u lg:right-4u bg-bg/80 backdrop-blur border border-accent/50 rounded-card px-3u py-2u">
-          <div className="font-mono text-accent font-bold text-xl leading-none">
-            {badge.value}
+    <div className="border-b border-metal/20 bg-surface/40">
+      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-3u lg:py-4u">
+        <div className="relative border-y sm:border border-metal/30 sm:rounded-card overflow-hidden">
+          {/* console title bar */}
+          <div className="relative z-10 flex items-center justify-between gap-2u border-b border-metal/30 bg-bg px-2u py-1u font-mono text-[11px] tracking-wider text-metal">
+            <span className="flex items-center gap-1u">
+              <span
+                aria-hidden="true"
+                className="h-1u w-1u rounded-full bg-accent inline-block animate-pulse"
+              />
+              VERTAXO_OS // {tag}
+            </span>
+            <span className="hidden sm:inline text-metal/60">
+              МОСКВА · МОСКОВСКАЯ ОБЛАСТЬ
+            </span>
           </div>
-          <div className="text-metal text-xs mt-1u whitespace-nowrap">
-            {badge.label}
-          </div>
-        </div>
-      )}
 
-      <div className="relative mx-auto max-w-7xl w-full px-2u pb-8u pt-8u">
-        <div className="max-w-3xl border-l-2 border-accent pl-3u">
-          <p className="font-mono text-accent text-sm mb-2u tracking-widest">
-            {"// VERTAXO"}
-          </p>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.1] md:leading-[1.05] mb-3u break-words">
-            {title}
-          </h1>
-          <p className="text-metal text-base sm:text-lg md:text-xl max-w-2xl mb-4u">
-            {subtitle}
-          </p>
-          {badge && (
-            <div className="md:hidden inline-flex items-baseline gap-1u bg-bg/80 border border-accent/50 rounded-card px-2u py-1u mb-4u">
-              <span className="font-mono text-accent font-bold">
-                {badge.value}
+          <div className="relative grid lg:grid-cols-[1.1fr_1fr]">
+            {/* readout panel */}
+            <div className="relative z-10 px-2u py-4u sm:px-3u lg:p-6u flex flex-col justify-center">
+              <ScanlineGrid />
+              <div className="relative border-l-2 border-accent pl-2u sm:pl-3u">
+                <p className="font-mono text-accent text-sm mb-2u tracking-widest">
+                  {"// VERTAXO"}
+                </p>
+                <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-[1.15] md:leading-[1.1] mb-3u break-words">
+                  {title}
+                </h1>
+                <p className="text-metal text-base sm:text-lg max-w-2xl mb-4u">
+                  {subtitle}
+                </p>
+                {actions && (
+                  <div className="flex flex-wrap gap-2u">{actions}</div>
+                )}
+              </div>
+            </div>
+
+            {/* viewfinder panel */}
+            <div className="relative min-h-[280px] lg:min-h-[440px] border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
+              <Image
+                src={image}
+                alt={imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                priority
+                className="object-cover"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-bg/10"
+              />
+              {/* corner brackets */}
+              <span
+                aria-hidden="true"
+                className="absolute top-2u left-2u h-3u w-3u border-t-2 border-l-2 border-accent"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute top-2u right-2u h-3u w-3u border-t-2 border-r-2 border-accent"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute bottom-2u left-2u h-3u w-3u border-b-2 border-l-2 border-accent"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute bottom-2u right-2u h-3u w-3u border-b-2 border-r-2 border-accent"
+              />
+              {/* scanning line */}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 right-0 h-px bg-accent/70 shadow-[0_0_8px_var(--color-accent)] animate-hero-scan motion-reduce:hidden"
+              />
+              <span className="absolute top-2u left-1/2 -translate-x-1/2 font-mono text-[11px] text-accent flex items-center gap-1u">
+                <span
+                  aria-hidden="true"
+                  className="h-1u w-1u rounded-full bg-accent inline-block animate-pulse"
+                />
+                REC
               </span>
-              <span className="text-metal text-xs">{badge.label}</span>
+            </div>
+          </div>
+
+          {/* stats readout footer */}
+          {stats && stats.length > 0 && (
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 border-t border-metal/30 bg-bg">
+              {stats.slice(0, 4).map((s) => (
+                <div
+                  key={s.label}
+                  className="px-2u py-2u border-r border-metal/20 last:border-r-0"
+                >
+                  <div className="font-mono font-bold text-accent text-lg leading-none">
+                    {s.value}
+                  </div>
+                  <div className="text-metal text-[11px] uppercase tracking-wide mt-1u">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
-          {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
         </div>
       </div>
     </div>
