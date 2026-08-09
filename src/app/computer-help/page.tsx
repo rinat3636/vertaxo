@@ -1,0 +1,161 @@
+import type { Metadata } from "next";
+import { Hero } from "@/components/Hero";
+import { ButtonLink } from "@/components/Button";
+import {
+  Section,
+  SectionTitle,
+  ServiceCards,
+  StatGrid,
+  StepList,
+  Faq,
+  PortfolioTeaser,
+  ReviewsTeaser,
+  CtaBlock,
+} from "@/components/sections";
+import { SITE_URL } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title:
+    "Компьютерная помощь и IT-администрирование в Москве и области | VERTAXO",
+  description:
+    "Компьютерная помощь в Москве и МО: поддержка пользователей, администрирование 1С, настройка сетей, информационная безопасность, резервное копирование. Оставьте заявку — ответим быстро.",
+  alternates: { canonical: `${SITE_URL}/computer-help` },
+};
+
+const services = [
+  {
+    title: "Техническая поддержка пользователей",
+    description: "Оперативное решение проблем с компьютерами и программами.",
+  },
+  {
+    title: "Администрирование 1С",
+    description: "Установка, обновление и сопровождение конфигураций 1С.",
+  },
+  {
+    title: "Информационная безопасность",
+    description: "Защита данных, антивирусная защита, аудит безопасности.",
+  },
+  {
+    title: "Организация удалённого доступа",
+    description: "Безопасный доступ к рабочим ресурсам из любой точки.",
+  },
+  {
+    title: "Настройка сетей",
+    description: "Проектирование и настройка локальных сетей и Wi-Fi.",
+  },
+  {
+    title: "Настройка рабочих мест",
+    description: "Подготовка компьютеров и периферии к работе под ключ.",
+  },
+  {
+    title: "Резервное копирование данных",
+    description: "Автоматическое резервное копирование и восстановление.",
+  },
+  {
+    title: "Доступ к корпоративным файлам",
+    description: "Файловые хранилища и разграничение прав доступа.",
+  },
+  {
+    title: "Разработка и создание сайтов",
+    description: "Сайты для бизнеса: от лендинга до корпоративного портала.",
+  },
+  {
+    title: "Консультации",
+    description: "Помощь в выборе техники, ПО и IT-решений для бизнеса.",
+  },
+] as const;
+
+const stats = [
+  { value: "10+ лет", label: "опыта администрирования и поддержки" },
+  { value: "24/7", label: "критичные проблемы решаем без выходных" },
+  { value: "99%", label: "довольных клиентов" },
+  { value: "Москва и МО", label: "выезд к клиенту и удалённая помощь" },
+] as const;
+
+const steps = [
+  "Заявка и диагностика проблемы",
+  "Оценка объёма работ и согласование",
+  "Выполнение работ — удалённо или с выездом",
+  "Проверка результата вместе с вами",
+  "Поддержка и сопровождение",
+] as const;
+
+const faq = [
+  {
+    q: "Работаете ли вы удалённо?",
+    a: "Да, большинство задач решаем удалённо. При необходимости выезжаем к вам в пределах Москвы и Московской области.",
+  },
+  {
+    q: "Обслуживаете ли вы организации по договору?",
+    a: "Да, берём компании на абонентское IT-обслуживание: поддержка пользователей, серверов, сети и 1С по фиксированной ежемесячной ставке.",
+  },
+  {
+    q: "Как быстро вы реагируете на заявку?",
+    a: "На заявки отвечаем в течение рабочего часа. Критичные проблемы (не работает сеть, 1С, сервер) берём в работу немедленно.",
+  },
+  {
+    q: "Можно ли восстановить удалённые данные?",
+    a: "Во многих случаях — да. Чем раньше вы обратитесь и чем меньше использовался диск после удаления, тем выше шанс восстановления.",
+  },
+] as const;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Компьютерная помощь и IT-администрирование",
+  provider: { "@type": "LocalBusiness", name: "VERTAXO", url: SITE_URL },
+  areaServed: ["Москва", "Московская область"],
+  serviceType: "Компьютерная помощь",
+};
+
+export default function ComputerHelpPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Hero
+        title="Компьютерная помощь и защита данных"
+        subtitle="Поддержка пользователей, администрирование и информационная безопасность для дома и бизнеса в Москве и Московской области"
+        actions={<ButtonLink href="#lead">Получить консультацию</ButtonLink>}
+      />
+
+      <Section>
+        <SectionTitle>Что мы делаем</SectionTitle>
+        <ServiceCards items={services} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Почему выбирают нас</SectionTitle>
+        <StatGrid items={stats} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Как мы работаем</SectionTitle>
+        <StepList steps={steps} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Примеры работ</SectionTitle>
+        <PortfolioTeaser category="computer-help" />
+      </Section>
+
+      <Section>
+        <SectionTitle>Отзывы</SectionTitle>
+        <ReviewsTeaser />
+      </Section>
+
+      <Section>
+        <SectionTitle>Частые вопросы</SectionTitle>
+        <Faq items={faq} />
+      </Section>
+
+      <CtaBlock
+        source="/computer-help"
+        title="Нужна помощь с компьютерами или сетью?"
+        text="Опишите проблему — предложим решение и назовём сроки."
+      />
+    </>
+  );
+}
