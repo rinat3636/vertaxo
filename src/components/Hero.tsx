@@ -43,7 +43,7 @@ export function Hero({
       <div className="relative mx-auto max-w-7xl px-2u py-6u lg:py-8u grid gap-4u lg:grid-cols-2 items-center">
         <div>
           <p className="font-mono text-accent text-sm mb-2u tracking-widest">
-            // VERTAXO
+            {"// VERTAXO"}
           </p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-3u">
             {title}
