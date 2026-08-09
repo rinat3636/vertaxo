@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Metrika } from "@/components/Metrika";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${unbounded.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text-primary">
+        <ScrollProgress />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

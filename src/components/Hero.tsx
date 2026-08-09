@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 
-function BlueprintBackdrop() {
+function BlueprintOverlay() {
   return (
     <svg
-      className="absolute inset-0 h-full w-full opacity-15"
+      className="absolute inset-0 h-full w-full opacity-20 mix-blend-screen"
       aria-hidden="true"
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 800 400"
@@ -40,50 +40,62 @@ export function Hero({
   badge?: { value: string; label: string };
 }) {
   return (
-    <div className="relative overflow-hidden border-b border-metal/20">
-      <BlueprintBackdrop />
-      <div className="relative mx-auto max-w-7xl px-2u py-6u lg:py-8u grid gap-4u lg:grid-cols-[1.15fr_1fr] items-center">
-        <div className="relative lg:pl-3u lg:border-l lg:border-accent-secondary/40">
+    <div
+      className="relative overflow-hidden border-b border-metal/20 min-h-[560px] md:min-h-[680px] flex items-end"
+      style={{
+        clipPath:
+          "polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%)",
+      }}
+    >
+      <Image
+        src={image}
+        alt={imageAlt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/20"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/20 to-transparent"
+      />
+      <BlueprintOverlay />
+
+      {badge && (
+        <div className="hidden md:block absolute top-6u right-2u lg:right-4u bg-bg/80 backdrop-blur border border-accent/50 rounded-card px-3u py-2u">
+          <div className="font-mono text-accent font-bold text-xl leading-none">
+            {badge.value}
+          </div>
+          <div className="text-metal text-xs mt-1u whitespace-nowrap">
+            {badge.label}
+          </div>
+        </div>
+      )}
+
+      <div className="relative mx-auto max-w-7xl w-full px-2u pb-8u pt-8u">
+        <div className="max-w-3xl border-l-2 border-accent pl-3u">
           <p className="font-mono text-accent text-sm mb-2u tracking-widest">
             {"// VERTAXO"}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-3u">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.1] md:leading-[1.05] mb-3u break-words">
             {title}
           </h1>
-          <p className="text-metal text-lg md:text-xl max-w-2xl mb-4u">
+          <p className="text-metal text-base sm:text-lg md:text-xl max-w-2xl mb-4u">
             {subtitle}
           </p>
-          {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
-        </div>
-        <div className="relative lg:-mr-2u">
-          <div className="relative rounded-l-card overflow-hidden border border-accent/30 lg:border-r-0">
-            <Image
-              src={image}
-              alt={imageAlt}
-              width={1536}
-              height={1024}
-              priority
-              className="w-full h-auto object-cover"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-bg/60 to-transparent"
-            />
-          </div>
-          <div
-            aria-hidden="true"
-            className="absolute -top-1u -left-1u h-6u w-6u border-t-2 border-l-2 border-accent-secondary"
-          />
           {badge && (
-            <div className="absolute -bottom-3u left-2u lg:-left-3u bg-bg border border-accent/50 rounded-card px-3u py-2u shadow-none">
-              <div className="font-mono text-accent font-bold text-xl leading-none">
+            <div className="md:hidden inline-flex items-baseline gap-1u bg-bg/80 border border-accent/50 rounded-card px-2u py-1u mb-4u">
+              <span className="font-mono text-accent font-bold">
                 {badge.value}
-              </div>
-              <div className="text-metal text-xs mt-1u whitespace-nowrap">
-                {badge.label}
-              </div>
+              </span>
+              <span className="text-metal text-xs">{badge.label}</span>
             </div>
           )}
+          {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
         </div>
       </div>
     </div>

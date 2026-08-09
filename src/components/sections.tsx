@@ -171,22 +171,30 @@ export function StatGrid({
 }: {
   items: readonly { value: string; label: string }[];
 }) {
-  return (
-    <div className="grid gap-3u grid-cols-2 lg:grid-cols-4">
-      {items.map((item) => (
+  const track = (
+    <div className="flex items-stretch shrink-0">
+      {items.map((item, i) => (
         <div
-          key={item.label}
-          className="relative bg-surface border-t-2 border-accent p-3u"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px))" }}
+          key={`${item.label}-${i}`}
+          className="flex items-center gap-2u px-4u py-3u border-r border-metal/20 whitespace-nowrap"
         >
-          <div className="font-mono font-bold text-2xl md:text-3xl text-text-primary mb-1u">
+          <span className="font-mono font-bold text-2xl md:text-3xl text-accent">
             {item.value}
-          </div>
-          <div className="text-metal text-xs uppercase tracking-wider">
+          </span>
+          <span className="text-metal text-xs uppercase tracking-wider max-w-[10em] whitespace-normal">
             {item.label}
-          </div>
+          </span>
         </div>
       ))}
+    </div>
+  );
+
+  return (
+    <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden border-y border-metal/20 bg-surface motion-reduce:overflow-x-auto">
+      <div className="flex motion-reduce:animate-none animate-marquee motion-reduce:w-full">
+        {track}
+        {track}
+      </div>
     </div>
   );
 }
