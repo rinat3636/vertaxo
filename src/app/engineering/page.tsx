@@ -65,7 +65,7 @@ export default function EngineeringPage() {
       />
 
       <Section>
-        <SectionTitle>Что мы разрабатываем</SectionTitle>
+        <SectionTitle index={1}>Что мы разрабатываем</SectionTitle>
         <p className="text-metal max-w-prose">
           Подробный перечень услуг направления готовится к публикации.
           Расскажите о вашей задаче через форму ниже — обсудим, чем можем
@@ -74,27 +74,27 @@ export default function EngineeringPage() {
       </Section>
 
       <Section>
-        <SectionTitle>Почему выбирают нас</SectionTitle>
+        <SectionTitle index={2}>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
       </Section>
 
       <Section>
-        <SectionTitle>Этапы работы</SectionTitle>
+        <SectionTitle index={3}>Этапы работы</SectionTitle>
         <StepList steps={steps} />
       </Section>
 
       <Section>
-        <SectionTitle>Примеры работ</SectionTitle>
+        <SectionTitle index={4}>Примеры работ</SectionTitle>
         <PortfolioSection category="engineering" />
       </Section>
 
       <Section>
-        <SectionTitle>Отзывы</SectionTitle>
+        <SectionTitle index={5}>Отзывы</SectionTitle>
         <ReviewsSection category="engineering" />
       </Section>
 
       <Section>
-        <SectionTitle>Частые вопросы</SectionTitle>
+        <SectionTitle index={6}>Частые вопросы</SectionTitle>
         <Faq items={faq} />
       </Section>
 

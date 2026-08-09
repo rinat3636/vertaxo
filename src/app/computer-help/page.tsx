@@ -134,32 +134,32 @@ export default function ComputerHelpPage() {
       />
 
       <Section>
-        <SectionTitle>Что мы делаем</SectionTitle>
+        <SectionTitle index={1}>Что мы делаем</SectionTitle>
         <ServiceCards items={services} />
       </Section>
 
       <Section>
-        <SectionTitle>Почему выбирают нас</SectionTitle>
+        <SectionTitle index={2}>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
       </Section>
 
       <Section>
-        <SectionTitle>Как мы работаем</SectionTitle>
+        <SectionTitle index={3}>Как мы работаем</SectionTitle>
         <StepList steps={steps} />
       </Section>
 
       <Section>
-        <SectionTitle>Примеры работ</SectionTitle>
+        <SectionTitle index={4}>Примеры работ</SectionTitle>
         <PortfolioSection category="computer-help" />
       </Section>
 
       <Section>
-        <SectionTitle>Отзывы</SectionTitle>
+        <SectionTitle index={5}>Отзывы</SectionTitle>
         <ReviewsSection category="computer-help" />
       </Section>
 
       <Section>
-        <SectionTitle>Частые вопросы</SectionTitle>
+        <SectionTitle index={6}>Частые вопросы</SectionTitle>
         <Faq items={faq} />
       </Section>
 

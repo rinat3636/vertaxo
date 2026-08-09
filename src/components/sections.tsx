@@ -23,9 +23,23 @@ export function Section({
   );
 }
 
-export function SectionTitle({ children }: { children: ReactNode }) {
+export function SectionTitle({
+  children,
+  index,
+}: {
+  children: ReactNode;
+  index: number;
+}) {
   return (
-    <h2 className="text-2xl md:text-3xl font-semibold mb-4u">{children}</h2>
+    <div className="mb-4u">
+      <div className="flex items-center gap-2u mb-1u">
+        <span className="font-mono text-accent-secondary text-xs tracking-widest">
+          {`// ${String(index).padStart(2, "0")}`}
+        </span>
+        <span className="h-px flex-1 bg-metal/20" aria-hidden="true" />
+      </div>
+      <h2 className="text-2xl md:text-3xl font-semibold">{children}</h2>
+    </div>
   );
 }
 
@@ -141,12 +155,15 @@ export function StatGrid({
       {items.map((item) => (
         <div
           key={item.label}
-          className="bg-surface border border-metal/20 rounded-card p-3u text-center"
+          className="relative bg-surface border-t-2 border-accent p-3u"
+          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px))" }}
         >
-          <div className="font-mono font-bold text-2xl md:text-3xl text-accent mb-1u">
+          <div className="font-mono font-bold text-2xl md:text-3xl text-text-primary mb-1u">
             {item.value}
           </div>
-          <div className="text-metal text-sm">{item.label}</div>
+          <div className="text-metal text-xs uppercase tracking-wider">
+            {item.label}
+          </div>
         </div>
       ))}
     </div>

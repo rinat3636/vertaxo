@@ -117,7 +117,7 @@ export default function HomePage() {
       />
 
       <Section>
-        <SectionTitle>Направления</SectionTitle>
+        <SectionTitle index={1}>Направления</SectionTitle>
         <ServiceBanners items={services} />
         <div className="flex flex-wrap gap-2u mt-4u">
           <ButtonLink href="#lead">Получить консультацию</ButtonLink>
@@ -128,27 +128,27 @@ export default function HomePage() {
       </Section>
 
       <Section>
-        <SectionTitle>Почему выбирают нас</SectionTitle>
+        <SectionTitle index={2}>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
       </Section>
 
       <Section>
-        <SectionTitle>Как мы работаем</SectionTitle>
+        <SectionTitle index={3}>Как мы работаем</SectionTitle>
         <StepList steps={steps} />
       </Section>
 
       <Section>
-        <SectionTitle>Примеры работ</SectionTitle>
+        <SectionTitle index={4}>Примеры работ</SectionTitle>
         <PortfolioSection />
       </Section>
 
       <Section>
-        <SectionTitle>Отзывы</SectionTitle>
+        <SectionTitle index={5}>Отзывы</SectionTitle>
         <ReviewsSection />
       </Section>
 
       <Section>
-        <SectionTitle>Частые вопросы</SectionTitle>
+        <SectionTitle index={6}>Частые вопросы</SectionTitle>
         <Faq items={faq} />
       </Section>
 

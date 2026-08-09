@@ -142,22 +142,22 @@ export default function PrintingPage() {
       />
 
       <Section>
-        <SectionTitle>Услуги направления</SectionTitle>
+        <SectionTitle index={1}>Услуги направления</SectionTitle>
         <ServiceCards items={services} />
       </Section>
 
       <Section>
-        <SectionTitle>Материалы печати</SectionTitle>
+        <SectionTitle index={2}>Материалы печати</SectionTitle>
         <MaterialCards items={materials} />
       </Section>
 
       <Section>
-        <SectionTitle>Почему выбирают нас</SectionTitle>
+        <SectionTitle index={3}>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
       </Section>
 
       <Section>
-        <SectionTitle>О направлении</SectionTitle>
+        <SectionTitle index={4}>О направлении</SectionTitle>
         <StepList steps={steps} />
         <p className="text-metal mt-3u max-w-prose">
           Работаем по технологии FDM — послойное наплавление термопластика.
@@ -169,12 +169,12 @@ export default function PrintingPage() {
       </Section>
 
       <Section>
-        <SectionTitle>Примеры работ</SectionTitle>
+        <SectionTitle index={5}>Примеры работ</SectionTitle>
         <PortfolioSection category="3d-printing" />
       </Section>
 
       <Section>
-        <SectionTitle>Наше оборудование</SectionTitle>
+        <SectionTitle index={6}>Наше оборудование</SectionTitle>
         <p className="text-metal max-w-prose">
           Печатаем на современных FDM-принтерах с подогреваемым столом и
           закрытой камерой. Точный список моделей оборудования и характеристик
@@ -184,17 +184,17 @@ export default function PrintingPage() {
       </Section>
 
       <Section>
-        <SectionTitle>Отзывы</SectionTitle>
+        <SectionTitle index={7}>Отзывы</SectionTitle>
         <ReviewsSection category="3d-printing" />
       </Section>
 
       <Section>
-        <SectionTitle>Частые вопросы</SectionTitle>
+        <SectionTitle index={8}>Частые вопросы</SectionTitle>
         <Faq items={faq} />
       </Section>
 
       <Section>
-        <SectionTitle>Новые разработки</SectionTitle>
+        <SectionTitle index={9}>Новые разработки</SectionTitle>
         <p className="text-metal max-w-prose">
           Анонсы новых изделий и собственных разработок публикуются в разделе{" "}
           <a href="/works" className="text-accent hover:underline">
