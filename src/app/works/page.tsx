@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Наши работы — портфолио VERTAXO",
   description:
-    "Портфолио VERTAXO: реализованные проекты по компьютерной помощи, 3D-печати и инженерным разработкам в Москве и Московской области.",
+    "Портфолио VERTAXO: реализованные проекты по компьютерной помощи, 3D-печати и инженерным разработкам по всей России.",
   alternates: { canonical: `${SITE_URL}/works` },
 };
 

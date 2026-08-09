@@ -56,7 +56,7 @@ export function Hero({
               VERTAXO_OS // {tag}
             </span>
             <span className="hidden sm:inline text-metal/60">
-              МОСКВА · МОСКОВСКАЯ ОБЛАСТЬ
+              РАБОТАЕМ ПО ВСЕЙ РОССИИ
             </span>
           </div>
 

@@ -14,7 +14,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-bg/90 backdrop-blur border-b border-metal/20">
       <div className="hidden md:block border-b border-metal/10">
         <div className="mx-auto max-w-7xl px-2u py-1u flex items-center justify-between font-mono text-[11px] tracking-wider text-metal/70">
-          <span>{"// МОСКВА И МОСКОВСКАЯ ОБЛАСТЬ"}</span>
+          <span>{"// РАБОТАЕМ ПО ВСЕЙ РОССИИ"}</span>
           <span className="flex items-center gap-1u">
             <span
               aria-hidden="true"

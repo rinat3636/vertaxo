@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Отзывы клиентов | VERTAXO",
   description:
-    "Отзывы клиентов VERTAXO о компьютерной помощи, 3D-печати и инженерных разработках в Москве и Московской области.",
+    "Отзывы клиентов VERTAXO о компьютерной помощи, 3D-печати и инженерных разработках по всей России.",
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 

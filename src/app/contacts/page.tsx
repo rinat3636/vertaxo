@@ -5,7 +5,7 @@ import { CONTACTS, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Контакты | VERTAXO",
   description:
-    "Свяжитесь с VERTAXO: Telegram, телефон, форма обратной связи. Компьютерная помощь, 3D-печать и инженерные разработки в Москве и Московской области.",
+    "Свяжитесь с VERTAXO: Telegram, телефон, форма обратной связи. Компьютерная помощь, 3D-печать и инженерные разработки по всей России.",
   alternates: { canonical: `${SITE_URL}/contacts` },
 };
 
@@ -16,7 +16,7 @@ export default function ContactsPage() {
         <PageHeader
           tag="КОНТАКТЫ"
           title="Контакты"
-          text="Работаем в Москве и Московской области. Напишите нам удобным способом — ответим быстро."
+          text="Работаем по всей России. Напишите нам удобным способом — ответим быстро."
         />
         <ul className="grid gap-3u sm:grid-cols-3">
           <li className="relative bg-surface border border-metal/20 rounded-card p-3u">
