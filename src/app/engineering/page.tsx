@@ -61,6 +61,7 @@ export default function EngineeringPage() {
         subtitle="Создание новых технических решений под задачи заказчика — от идеи до готового решения"
         image="/images/engineering.webp"
         imageAlt="Инженерный чертёж механической детали, светящиеся голубые линии на тёмном фоне"
+        badge={{ value: stats[0].value, label: stats[0].label }}
         actions={<ButtonLink href="#lead">Обсудить задачу</ButtonLink>}
       />
 

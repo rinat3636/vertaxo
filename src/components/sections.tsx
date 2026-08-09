@@ -54,14 +54,25 @@ export function ServiceCards({
 }) {
   return (
     <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
-        <Card key={item.title} className="flex flex-col gap-2u">
-          {item.icon && icons[item.icon]}
-          <h3 className="text-lg font-semibold">{item.title}</h3>
-          <p className="text-metal text-sm flex-1">{item.description}</p>
-          <Link href="#lead" className="text-accent text-sm hover:underline">
-            Оставить заявку →
-          </Link>
+      {items.map((item, i) => (
+        <Card
+          key={item.title}
+          className={`flex flex-col gap-2u ${i === 0 ? "sm:col-span-2 lg:col-span-2 sm:flex-row sm:items-start sm:gap-3u" : ""}`}
+        >
+          <div className={i === 0 ? "sm:shrink-0" : ""}>
+            {item.icon && icons[item.icon]}
+          </div>
+          <div className="flex flex-col gap-2u flex-1">
+            <h3
+              className={i === 0 ? "text-xl font-semibold" : "text-lg font-semibold"}
+            >
+              {item.title}
+            </h3>
+            <p className="text-metal text-sm flex-1">{item.description}</p>
+            <Link href="#lead" className="text-accent text-sm hover:underline">
+              Оставить заявку →
+            </Link>
+          </div>
         </Card>
       ))}
     </div>
@@ -80,15 +91,21 @@ export function ServiceBanners({
   }[];
 }) {
   return (
-    <div className="grid gap-3u lg:grid-cols-3">
-      {items.map((item) => (
-        <Link key={item.href} href={item.href} className="group">
-          <article className="relative h-full min-h-[320px] rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end">
+    <div className="grid gap-3u lg:grid-cols-2 lg:grid-rows-2">
+      {items.map((item, i) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className={`group ${i === 0 ? "lg:row-span-2" : ""}`}
+        >
+          <article
+            className={`relative h-full ${i === 0 ? "min-h-[420px] lg:min-h-full" : "min-h-[240px]"} rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end`}
+          >
             <Image
               src={item.image}
               alt={item.imageAlt}
               fill
-              sizes="(max-width: 1024px) 100vw, 33vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
             />
             <div
@@ -96,7 +113,11 @@ export function ServiceBanners({
               className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent"
             />
             <div className="relative p-3u">
-              <h3 className="text-xl font-semibold mb-1u">{item.title}</h3>
+              <h3
+                className={`font-semibold mb-1u ${i === 0 ? "text-2xl md:text-3xl" : "text-xl"}`}
+              >
+                {item.title}
+              </h3>
               <p className="text-metal text-sm mb-2u">{item.description}</p>
               <span className="inline-block rounded-card bg-accent text-bg font-semibold text-sm px-2u py-1u opacity-0 translate-y-1u transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                 Подробнее
@@ -176,7 +197,11 @@ export function StepList({ steps }: { steps: readonly string[] }) {
       {steps.map((step, i) => (
         <li
           key={step}
-          className="bg-surface border border-metal/20 rounded-card p-3u"
+          className={`relative bg-surface border border-metal/20 rounded-card p-3u ${
+            i < steps.length - 1
+              ? "after:content-['→'] after:absolute after:top-3u after:-right-[22px] after:text-accent-secondary after:hidden lg:after:block"
+              : ""
+          }`}
         >
           <span className="font-mono text-accent-secondary font-bold block mb-1u">
             {String(i + 1).padStart(2, "0")}

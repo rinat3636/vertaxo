@@ -30,18 +30,20 @@ export function Hero({
   actions,
   image,
   imageAlt,
+  badge,
 }: {
   title: string;
   subtitle: string;
   actions?: ReactNode;
   image: string;
   imageAlt: string;
+  badge?: { value: string; label: string };
 }) {
   return (
     <div className="relative overflow-hidden border-b border-metal/20">
       <BlueprintBackdrop />
-      <div className="relative mx-auto max-w-7xl px-2u py-6u lg:py-8u grid gap-4u lg:grid-cols-2 items-center">
-        <div>
+      <div className="relative mx-auto max-w-7xl px-2u py-6u lg:py-8u grid gap-4u lg:grid-cols-[1.15fr_1fr] items-center">
+        <div className="relative lg:pl-3u lg:border-l lg:border-accent-secondary/40">
           <p className="font-mono text-accent text-sm mb-2u tracking-widest">
             {"// VERTAXO"}
           </p>
@@ -53,8 +55,8 @@ export function Hero({
           </p>
           {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
         </div>
-        <div className="relative">
-          <div className="relative rounded-card overflow-hidden border border-accent/30">
+        <div className="relative lg:-mr-2u">
+          <div className="relative rounded-l-card overflow-hidden border border-accent/30 lg:border-r-0">
             <Image
               src={image}
               alt={imageAlt}
@@ -70,12 +72,18 @@ export function Hero({
           </div>
           <div
             aria-hidden="true"
-            className="absolute -bottom-1u -right-1u h-6u w-6u border-b-2 border-r-2 border-accent"
-          />
-          <div
-            aria-hidden="true"
             className="absolute -top-1u -left-1u h-6u w-6u border-t-2 border-l-2 border-accent-secondary"
           />
+          {badge && (
+            <div className="absolute -bottom-3u left-2u lg:-left-3u bg-bg border border-accent/50 rounded-card px-3u py-2u shadow-none">
+              <div className="font-mono text-accent font-bold text-xl leading-none">
+                {badge.value}
+              </div>
+              <div className="text-metal text-xs mt-1u whitespace-nowrap">
+                {badge.label}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

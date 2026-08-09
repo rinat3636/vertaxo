@@ -130,6 +130,7 @@ export default function ComputerHelpPage() {
         subtitle="Поддержка пользователей, администрирование и информационная безопасность для дома и бизнеса в Москве и Московской области"
         image="/images/computer-help.webp"
         imageAlt="Тёмное рабочее место IT-специалиста: ноутбук и серверная стойка с голубой подсветкой"
+        badge={{ value: stats[0].value, label: stats[0].label }}
         actions={<ButtonLink href="#lead">Получить консультацию</ButtonLink>}
       />
 
