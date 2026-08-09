@@ -17,7 +17,7 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section className={`mx-auto max-w-7xl px-2u py-6u ${className}`} {...props}>
+    <section className={`mx-auto max-w-7xl px-2u py-4u ${className}`} {...props}>
       {children}
     </section>
   );
@@ -31,14 +31,14 @@ export function SectionTitle({
   index: number;
 }) {
   return (
-    <div className="mb-4u">
+    <div className="mb-3u">
       <div className="flex items-center gap-2u mb-1u">
         <span className="font-mono text-accent-secondary text-xs tracking-widest">
           {`// ${String(index).padStart(2, "0")}`}
         </span>
         <span className="h-px flex-1 bg-metal/20" aria-hidden="true" />
       </div>
-      <h2 className="text-2xl md:text-3xl font-semibold">{children}</h2>
+      <h2 className="text-xl md:text-2xl font-semibold">{children}</h2>
     </div>
   );
 }
@@ -99,7 +99,7 @@ export function ServiceBanners({
           className={`group ${i === 0 ? "lg:row-span-2" : ""}`}
         >
           <article
-            className={`relative h-full ${i === 0 ? "min-h-[420px] lg:min-h-full" : "min-h-[240px]"} rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end`}
+            className={`relative h-full ${i === 0 ? "min-h-[300px] lg:min-h-full" : "min-h-[170px]"} rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end`}
           >
             <Image
               src={item.image}

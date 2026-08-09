@@ -41,9 +41,10 @@ export function Hero({
   tag: string;
   stats?: readonly { value: string; label: string }[];
 }) {
+  const isLongTitle = title.length > 70;
   return (
     <div className="border-b border-metal/20 bg-surface/40">
-      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-3u lg:py-4u">
+      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-2u lg:py-3u">
         <div className="relative border-y sm:border border-metal/30 sm:rounded-card overflow-hidden">
           {/* console title bar */}
           <div className="relative z-10 flex items-center justify-between gap-2u border-b border-metal/30 bg-bg px-2u py-1u font-mono text-[11px] tracking-wider text-metal">
@@ -61,16 +62,22 @@ export function Hero({
 
           <div className="relative grid lg:grid-cols-[1.1fr_1fr]">
             {/* readout panel */}
-            <div className="relative z-10 px-2u py-4u sm:px-3u lg:p-6u flex flex-col justify-center">
+            <div className="relative z-10 px-2u py-3u sm:px-3u lg:p-4u flex flex-col justify-center">
               <ScanlineGrid />
               <div className="relative border-l-2 border-accent pl-2u sm:pl-3u">
-                <p className="font-mono text-accent text-sm mb-2u tracking-widest">
+                <p className="font-mono text-accent text-sm mb-1u tracking-widest">
                   {"// VERTAXO"}
                 </p>
-                <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-[1.15] md:leading-[1.1] mb-3u break-words">
+                <h1
+                  className={`font-bold leading-[1.15] md:leading-[1.1] mb-2u break-words ${
+                    isLongTitle
+                      ? "text-xl sm:text-2xl md:text-3xl"
+                      : "text-2xl sm:text-3xl md:text-4xl"
+                  }`}
+                >
                   {title}
                 </h1>
-                <p className="text-metal text-base sm:text-lg max-w-2xl mb-4u">
+                <p className="text-metal text-sm sm:text-base md:text-lg max-w-2xl mb-3u">
                   {subtitle}
                 </p>
                 {actions && (
@@ -80,7 +87,7 @@ export function Hero({
             </div>
 
             {/* viewfinder panel */}
-            <div className="relative min-h-[280px] lg:min-h-[440px] border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
+            <div className="relative min-h-[200px] lg:min-h-[300px] border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
               <Image
                 src={image}
                 alt={imageAlt}
