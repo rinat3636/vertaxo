@@ -25,7 +25,19 @@
 }
 
 body {
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--color-accent) 7%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-accent) 7%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+  background-attachment: fixed;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
 }
