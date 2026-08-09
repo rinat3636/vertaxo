@@ -122,33 +122,35 @@ export function ServiceBanners({
   }[];
 }) {
   return (
-    <div className="flex flex-col gap-3u">
+    <div className="flex flex-col gap-2u sm:gap-3u">
       {items.map((item, i) => (
         <Link key={item.href} href={item.href} className="group block">
-          <article className="relative grid lg:grid-cols-2 items-stretch rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60">
+          <article className="relative grid grid-cols-[96px_1fr] sm:grid-cols-1 lg:grid-cols-2 items-stretch rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60">
             <div
-              className={`relative min-h-[220px] lg:min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
+              className={`relative min-h-full sm:min-h-[180px] lg:min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
             >
               <Image
                 src={item.image}
                 alt={item.imageAlt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 640px) 96px, (max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
               <span
                 aria-hidden="true"
-                className="absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
+                className="hidden sm:block absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
               >
                 {`// 0${i + 1}`}
               </span>
             </div>
-            <div className="relative flex flex-col justify-center bg-surface p-3u lg:p-4u">
-              <h3 className="font-semibold text-2xl mb-2u">{item.title}</h3>
-              <p className="text-metal mb-3u max-w-prose">
+            <div className="relative flex flex-col justify-center bg-surface p-2u sm:p-3u lg:p-4u">
+              <h3 className="font-semibold text-base sm:text-2xl mb-1u sm:mb-2u">
+                {item.title}
+              </h3>
+              <p className="text-metal text-sm sm:text-base mb-1u sm:mb-3u max-w-prose">
                 {item.description}
               </p>
-              <span className="inline-flex items-center gap-1u text-accent text-sm font-semibold w-fit transition-transform duration-300 ease-out group-hover:translate-x-1u">
+              <span className="inline-flex items-center gap-1u text-accent text-xs sm:text-sm font-semibold w-fit transition-transform duration-300 ease-out group-hover:translate-x-1u">
                 Подробнее →
               </span>
             </div>
@@ -170,7 +172,7 @@ export function MaterialCards({
   }[];
 }) {
   return (
-    <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-4">
       {items.map((item) => (
         <article
           key={item.title}
@@ -183,11 +185,13 @@ export function MaterialCards({
             height={1024}
             className="w-full h-auto object-cover aspect-square"
           />
-          <div className="p-2u">
-            <h3 className="font-semibold font-mono text-accent">
+          <div className="p-1u sm:p-2u">
+            <h3 className="font-semibold font-mono text-accent text-sm sm:text-base">
               {item.title}
             </h3>
-            <p className="text-metal text-sm mt-1u">{item.description}</p>
+            <p className="text-metal text-xs sm:text-sm mt-1u">
+              {item.description}
+            </p>
           </div>
         </article>
       ))}
@@ -225,20 +229,20 @@ export function StatGrid({
 
 export function StepList({ steps }: { steps: readonly string[] }) {
   return (
-    <ol className="grid gap-3u md:grid-cols-2 lg:grid-cols-5">
+    <ol className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-5">
       {steps.map((step, i) => (
         <li
           key={step}
-          className={`relative bg-surface border border-metal/20 rounded-card p-3u ${
+          className={`relative bg-surface border border-metal/20 rounded-card p-2u sm:p-3u ${
             i < steps.length - 1
               ? "after:content-['→'] after:absolute after:top-3u after:-right-[22px] after:text-accent-secondary after:hidden lg:after:block"
               : ""
           }`}
         >
-          <span className="font-mono text-accent-secondary font-bold block mb-1u">
+          <span className="font-mono text-accent-secondary font-bold block mb-1u text-sm sm:text-base">
             {String(i + 1).padStart(2, "0")}
           </span>
-          <span className="text-sm">{step}</span>
+          <span className="text-xs sm:text-sm">{step}</span>
         </li>
       ))}
     </ol>
@@ -304,7 +308,7 @@ export async function PortfolioSection({ category }: { category?: string }) {
 
   return (
     <>
-      <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-3">
         {filtered.slice(0, 6).map((work) => (
           <Card key={work._id} className="overflow-hidden p-0">
             {work.imageUrl && (

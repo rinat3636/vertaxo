@@ -26,32 +26,36 @@ export default async function ShopPage() {
         />
 
         {products.length > 0 ? (
-          <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-3">
             {products.map((product) => (
-              <Card key={product._id} className="flex flex-col">
+              <Card key={product._id} className="flex flex-col p-1u sm:p-3u">
                 {product.imageUrl && (
                   <Image
                     src={product.imageUrl}
                     alt={product.title}
                     width={600}
                     height={400}
-                    className="rounded-card mb-2u w-full h-auto"
+                    className="rounded-card mb-1u sm:mb-2u w-full h-auto"
                   />
                 )}
-                <h2 className="text-lg font-semibold mb-1u">
+                <h2 className="text-sm sm:text-lg font-semibold mb-1u">
                   {product.title}
                 </h2>
                 {product.description && (
-                  <p className="text-metal text-sm flex-1 mb-2u">
+                  <p className="text-metal text-xs sm:text-sm flex-1 mb-2u">
                     {product.description}
                   </p>
                 )}
                 {typeof product.price === "number" && (
-                  <p className="font-mono text-accent font-bold mb-2u">
+                  <p className="font-mono text-accent font-bold text-sm sm:text-base mb-2u">
                     {product.price.toLocaleString("ru-RU")} ₽
                   </p>
                 )}
-                <ButtonLink href="#lead" variant="secondary">
+                <ButtonLink
+                  href="#lead"
+                  variant="secondary"
+                  className="text-xs sm:text-sm px-2u py-1u sm:px-3u sm:py-2u text-center"
+                >
                   Оставить заявку
                 </ButtonLink>
               </Card>

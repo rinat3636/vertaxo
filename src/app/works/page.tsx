@@ -57,21 +57,25 @@ export default async function WorksPage({
         </nav>
 
         {filtered.length > 0 ? (
-          <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-3">
             {filtered.map((work) => (
-              <Card key={work._id}>
+              <Card key={work._id} className="p-1u sm:p-3u">
                 {work.imageUrl && (
                   <Image
                     src={work.imageUrl}
                     alt={work.title}
                     width={600}
                     height={400}
-                    className="rounded-card mb-2u w-full h-auto"
+                    className="rounded-card mb-1u sm:mb-2u w-full h-auto"
                   />
                 )}
-                <h2 className="text-lg font-semibold mb-1u">{work.title}</h2>
+                <h2 className="text-sm sm:text-lg font-semibold mb-1u">
+                  {work.title}
+                </h2>
                 {work.description && (
-                  <p className="text-metal text-sm">{work.description}</p>
+                  <p className="text-metal text-xs sm:text-sm">
+                    {work.description}
+                  </p>
                 )}
               </Card>
             ))}
