@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/Button";
 import {
   Section,
   SectionTitle,
+  ServiceCards,
   StatGrid,
   StepList,
   Faq,
@@ -22,6 +23,34 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/engineering` },
   robots: { index: false, follow: false },
 };
+
+// Черновой список направлений-заглушка до согласования финального перечня
+// с заказчиком (SPEC.md, открытый вопрос №1).
+const services = [
+  {
+    title: "Проектирование и расчёты",
+    description:
+      "Разработка конструкторской документации и инженерных расчётов под задачу.",
+    icon: "model",
+  },
+  {
+    title: "Прототипирование",
+    description:
+      "Изготовление и испытание опытных образцов перед запуском в работу.",
+    icon: "prototype",
+  },
+  {
+    title: "Нестандартные механизмы",
+    description:
+      "Узлы и приспособления, для которых нет готового решения на рынке.",
+    icon: "workstation",
+  },
+  {
+    title: "Автоматизация процессов",
+    description: "Технические решения для автоматизации ручных операций.",
+    icon: "code",
+  },
+] as const;
 
 const stats = [
   { value: "10+ лет", label: "инженерного опыта" },
@@ -68,11 +97,11 @@ export default function EngineeringPage() {
 
       <Section>
         <SectionTitle index={1}>Что мы разрабатываем</SectionTitle>
-        <p className="text-metal max-w-prose">
-          Подробный перечень услуг направления готовится к публикации.
-          Расскажите о вашей задаче через форму ниже — обсудим, чем можем
-          помочь.
+        <p className="text-metal text-sm mb-3u">
+          Черновой перечень направлений — уточняется с заказчиком, финальная
+          версия появится после согласования.
         </p>
+        <ServiceCards items={services} />
       </Section>
 
       <Section>

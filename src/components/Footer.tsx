@@ -50,6 +50,9 @@ export function Footer() {
                 MAX: {CONTACTS.maxPhone}
               </a>
             </li>
+            <li className="text-metal/50" title="Ссылка появится позже">
+              VK-канал (скоро)
+            </li>
             <li>
               <Link href="/privacy" className="text-metal hover:text-text-primary">
                 Политика конфиденциальности

@@ -177,13 +177,26 @@ export default function PrintingPage() {
 
       <Section>
         <SectionTitle index={6}>Наше оборудование</SectionTitle>
-        <ul className="grid gap-2u sm:grid-cols-2 text-metal max-w-prose list-disc pl-2u marker:text-accent-secondary">
+        <ul className="grid gap-2u sm:grid-cols-2 text-metal max-w-prose list-disc pl-2u marker:text-accent-secondary mb-3u">
           <li>FDM-принтеры с подогреваемым столом</li>
           <li>Закрытая камера для термостойких пластиков</li>
           <li>Печать по нескольким материалам (PLA, PETG, ABS, TPU)</li>
           <li>Постобработка и контроль качества готовых изделий</li>
         </ul>
-        <p className="text-metal text-sm max-w-prose mt-2u">
+        <div className="grid gap-2u sm:grid-cols-3 max-w-2xl mb-2u">
+          {["Принтер №1", "Принтер №2", "Принтер №3"].map((placeholder) => (
+            <div
+              key={placeholder}
+              className="rounded-card border border-dashed border-metal/30 bg-surface/50 px-2u py-2u"
+            >
+              <div className="font-mono text-metal text-sm">{placeholder}</div>
+              <div className="text-metal/60 text-xs mt-1u">
+                модель уточняется
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="text-metal text-sm max-w-prose">
           Точный список моделей оборудования и характеристик публикуется после
           согласования с владельцем — уточните возможности под вашу задачу
           через форму заявки.
