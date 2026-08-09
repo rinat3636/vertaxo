@@ -77,23 +77,34 @@ export function ServiceCards({
   }[];
 }) {
   return (
-    <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
+    <div className="flex flex-col">
       {items.map((item, i) => (
-        <Card key={item.title} className="flex flex-col gap-2u">
-          <div className="flex items-start justify-between">
-            <span className="inline-flex items-center justify-center h-6u w-6u rounded-card border border-accent-secondary/30 bg-bg">
+        <div
+          key={item.title}
+          className="group grid gap-x-3u gap-y-1u sm:grid-cols-[56px_1fr_auto] items-start py-3u border-b border-metal/20 first:border-t"
+        >
+          <span
+            aria-hidden="true"
+            className="font-mono text-accent-secondary/40 text-3xl font-bold leading-none"
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div>
+            <div className="flex items-center gap-2u mb-1u">
               {item.icon && icons[item.icon]}
-            </span>
-            <span className="font-mono text-metal/40 text-xs" aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+            </div>
+            <p className="text-metal text-sm max-w-prose">
+              {item.description}
+            </p>
           </div>
-          <h3 className="text-lg font-semibold">{item.title}</h3>
-          <p className="text-metal text-sm flex-1">{item.description}</p>
-          <Link href="#lead" className="text-accent text-sm hover:underline">
+          <Link
+            href="#lead"
+            className="text-accent text-sm font-semibold whitespace-nowrap opacity-70 group-hover:opacity-100 transition-opacity duration-150 sm:self-center"
+          >
             Оставить заявку →
           </Link>
-        </Card>
+        </div>
       ))}
     </div>
   );
@@ -111,38 +122,36 @@ export function ServiceBanners({
   }[];
 }) {
   return (
-    <div className="grid gap-3u lg:grid-cols-3">
+    <div className="flex flex-col gap-3u">
       {items.map((item, i) => (
-        <Link key={item.href} href={item.href} className="group">
-          <article className="relative h-full min-h-[360px] rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end">
-            <Image
-              src={item.image}
-              alt={item.imageAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-            />
+        <Link key={item.href} href={item.href} className="group block">
+          <article className="relative grid lg:grid-cols-2 items-stretch rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60">
             <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
+              className={`relative min-h-[220px] lg:min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
             >
-              {`// 0${i + 1}`}
-            </span>
-            <div className="relative p-3u">
-              <h3 className="font-semibold text-xl mb-1u">{item.title}</h3>
-              <p className="text-metal text-sm mb-2u">{item.description}</p>
-              <span className="inline-flex items-center gap-1u text-accent text-sm font-semibold transition-transform duration-300 ease-out group-hover:translate-x-1u">
+              <Image
+                src={item.image}
+                alt={item.imageAlt}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
+              >
+                {`// 0${i + 1}`}
+              </span>
+            </div>
+            <div className="relative flex flex-col justify-center bg-surface p-3u lg:p-4u">
+              <h3 className="font-semibold text-2xl mb-2u">{item.title}</h3>
+              <p className="text-metal mb-3u max-w-prose">
+                {item.description}
+              </p>
+              <span className="inline-flex items-center gap-1u text-accent text-sm font-semibold w-fit transition-transform duration-300 ease-out group-hover:translate-x-1u">
                 Подробнее →
               </span>
             </div>
-            <span
-              aria-hidden="true"
-              className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-300 ease-out group-hover:w-full"
-            />
           </article>
         </Link>
       ))}
