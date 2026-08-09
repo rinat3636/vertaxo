@@ -16,7 +16,7 @@ export default function ContactsPage() {
         <PageHeader
           tag="КОНТАКТЫ"
           title="Контакты"
-          text="Работаем по всей России. Напишите нам удобным способом — ответим быстро."
+          text="Выезд — в Москве и Московской области, удалённо и с доставкой — по всей России. Напишите нам удобным способом — ответим быстро."
         />
         <ul className="grid gap-3u sm:grid-cols-3">
           <li className="relative bg-surface border border-metal/20 rounded-card p-3u">

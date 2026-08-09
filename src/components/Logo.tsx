@@ -7,23 +7,17 @@ export function LogoMark({ size = 36 }: { size?: number }) {
       aria-hidden="true"
       className="shrink-0"
     >
-      <defs>
-        <linearGradient id="vx-grad" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stopColor="var(--color-accent-secondary)" />
-          <stop offset="1" stopColor="var(--color-accent)" />
-        </linearGradient>
-      </defs>
-      <path d="M60 12 L100 96 L60 76 L20 96 Z" fill="url(#vx-grad)" />
+      <path d="M60 12 L100 96 L60 76 L20 96 Z" fill="var(--color-accent)" />
       <path
         d="M60 12 L60 2 M20 96 L8 108 M100 96 L112 108"
-        stroke="var(--color-accent)"
+        stroke="var(--color-accent-secondary)"
         strokeWidth="5"
         strokeLinecap="round"
-        opacity="0.7"
+        opacity="0.8"
       />
-      <circle cx="8" cy="108" r="5" fill="var(--color-accent)" />
-      <circle cx="112" cy="108" r="5" fill="var(--color-accent)" />
-      <circle cx="60" cy="2" r="5" fill="var(--color-accent)" />
+      <circle cx="8" cy="108" r="5" fill="var(--color-accent-secondary)" />
+      <circle cx="112" cy="108" r="5" fill="var(--color-accent-secondary)" />
+      <circle cx="60" cy="2" r="5" fill="var(--color-accent-secondary)" />
     </svg>
   );
 }
