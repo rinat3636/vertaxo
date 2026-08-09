@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Metrika } from "@/components/Metrika";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { AboutSection } from "@/components/sections";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollProgress />
         <Header />
         <main className="flex-1">{children}</main>
+        <AboutSection />
         <Footer />
         <Metrika />
       </body>
