@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 function BlueprintBackdrop() {
   return (
     <svg
-      className="absolute inset-0 h-full w-full opacity-20"
+      className="absolute inset-0 h-full w-full opacity-15"
       aria-hidden="true"
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 800 400"
@@ -19,21 +20,6 @@ function BlueprintBackdrop() {
         </pattern>
       </defs>
       <rect width="800" height="400" fill="url(#grid)" />
-      <polyline
-        points="120,320 400,80 680,320"
-        fill="none"
-        stroke="var(--color-accent)"
-        strokeWidth="1.5"
-      />
-      <line
-        x1="400"
-        y1="80"
-        x2="400"
-        y2="320"
-        stroke="var(--color-accent-secondary)"
-        strokeWidth="1"
-      />
-      <circle cx="400" cy="80" r="5" fill="var(--color-accent-secondary)" />
     </svg>
   );
 }
@@ -42,22 +28,55 @@ export function Hero({
   title,
   subtitle,
   actions,
+  image,
+  imageAlt,
 }: {
   title: string;
   subtitle: string;
   actions?: ReactNode;
+  image: string;
+  imageAlt: string;
 }) {
   return (
     <div className="relative overflow-hidden border-b border-metal/20">
       <BlueprintBackdrop />
-      <div className="relative mx-auto max-w-7xl px-2u py-8u">
-        <h1 className="text-3xl md:text-5xl font-bold max-w-4xl leading-tight mb-3u">
-          {title}
-        </h1>
-        <p className="text-metal text-lg md:text-xl max-w-2xl mb-4u">
-          {subtitle}
-        </p>
-        {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
+      <div className="relative mx-auto max-w-7xl px-2u py-6u lg:py-8u grid gap-4u lg:grid-cols-2 items-center">
+        <div>
+          <p className="font-mono text-accent text-sm mb-2u tracking-widest">
+            // VERTAXO
+          </p>
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-3u">
+            {title}
+          </h1>
+          <p className="text-metal text-lg md:text-xl max-w-2xl mb-4u">
+            {subtitle}
+          </p>
+          {actions && <div className="flex flex-wrap gap-2u">{actions}</div>}
+        </div>
+        <div className="relative">
+          <div className="relative rounded-card overflow-hidden border border-accent/30">
+            <Image
+              src={image}
+              alt={imageAlt}
+              width={1536}
+              height={1024}
+              priority
+              className="w-full h-auto object-cover"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-t from-bg/60 to-transparent"
+            />
+          </div>
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-1u -right-1u h-6u w-6u border-b-2 border-r-2 border-accent"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -top-1u -left-1u h-6u w-6u border-t-2 border-l-2 border-accent-secondary"
+          />
+        </div>
       </div>
     </div>
   );

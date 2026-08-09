@@ -5,11 +5,12 @@ import {
   Section,
   SectionTitle,
   ServiceCards,
+  MaterialCards,
   StatGrid,
   StepList,
   Faq,
-  PortfolioTeaser,
-  ReviewsTeaser,
+  PortfolioSection,
+  ReviewsSection,
   CtaBlock,
 } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
@@ -25,22 +26,60 @@ const services = [
   {
     title: "Разработка 3D-моделей",
     description: "Индивидуальные модели по эскизу, чертежу или образцу.",
+    icon: "model",
   },
   {
     title: "Подготовка к печати",
     description: "Оптимизация геометрии и параметров под технологию FDM.",
+    icon: "slicer",
   },
   {
     title: "Изготовление изделий",
     description: "Печать функциональных деталей и корпусов на заказ.",
+    icon: "printer3d",
   },
   {
     title: "Прототипирование",
     description: "Быстрые прототипы для проверки идей и конструкций.",
+    icon: "prototype",
   },
   {
     title: "Мелкосерийное производство",
     description: "Партии деталей без затрат на литьевые формы.",
+    icon: "batch",
+  },
+] as const;
+
+// Список материалов предварительный (SPEC.md, открытый вопрос №4);
+// изображения образцов подлежат замене на реальные фото.
+const materials = [
+  {
+    title: "PLA",
+    description:
+      "Универсальный материал для макетов, корпусов и декоративных изделий.",
+    image: "/images/material-pla.webp",
+    imageAlt: "Образец изделия из PLA-пластика, напечатанный на 3D-принтере",
+  },
+  {
+    title: "PETG",
+    description:
+      "Прочный и стойкий к влаге — для функциональных деталей и оснастки.",
+    image: "/images/material-petg.webp",
+    imageAlt: "Образец изделия из PETG-пластика, напечатанный на 3D-принтере",
+  },
+  {
+    title: "ABS",
+    description:
+      "Термостойкий инженерный пластик для нагруженных деталей и корпусов.",
+    image: "/images/material-abs.webp",
+    imageAlt: "Образец изделия из ABS-пластика, напечатанный на 3D-принтере",
+  },
+  {
+    title: "TPU",
+    description:
+      "Гибкий эластичный материал для уплотнителей, вставок и демпферов.",
+    image: "/images/material-tpu.webp",
+    imageAlt: "Гибкий образец изделия из TPU, напечатанный на 3D-принтере",
   },
 ] as const;
 
@@ -97,6 +136,8 @@ export default function PrintingPage() {
       <Hero
         title="3D-моделирование и 3D-печать"
         subtitle="Качественные изделия. Разработка индивидуальных моделей"
+        image="/images/3d-printing.webp"
+        imageAlt="3D-принтер печатает точную механическую деталь, видны слои филамента"
         actions={<ButtonLink href="#lead">Оставить заявку</ButtonLink>}
       />
 
@@ -106,33 +147,61 @@ export default function PrintingPage() {
       </Section>
 
       <Section>
+        <SectionTitle>Материалы печати</SectionTitle>
+        <MaterialCards items={materials} />
+      </Section>
+
+      <Section>
         <SectionTitle>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
       </Section>
 
       <Section>
-        <SectionTitle>Этапы работы</SectionTitle>
+        <SectionTitle>О направлении</SectionTitle>
         <StepList steps={steps} />
         <p className="text-metal mt-3u max-w-prose">
-          Работаем по технологии FDM: от разработки модели и подготовки к
-          печати до изготовления готовых изделий, прототипирования и
-          мелкосерийного производства.
+          Работаем по технологии FDM — послойное наплавление термопластика.
+          Полный цикл: от разработки модели и подготовки к печати до
+          изготовления готовых изделий, прототипирования и мелкосерийного
+          производства. Подберём материал под задачу — по прочности,
+          термостойкости, гибкости и внешнему виду.
         </p>
       </Section>
 
       <Section>
         <SectionTitle>Примеры работ</SectionTitle>
-        <PortfolioTeaser category="3d-printing" />
+        <PortfolioSection category="3d-printing" />
+      </Section>
+
+      <Section>
+        <SectionTitle>Наше оборудование</SectionTitle>
+        <p className="text-metal max-w-prose">
+          Печатаем на современных FDM-принтерах с подогреваемым столом и
+          закрытой камерой. Точный список моделей оборудования и характеристик
+          публикуется после согласования с владельцем — уточните возможности
+          под вашу задачу через форму заявки.
+        </p>
       </Section>
 
       <Section>
         <SectionTitle>Отзывы</SectionTitle>
-        <ReviewsTeaser />
+        <ReviewsSection category="3d-printing" />
       </Section>
 
       <Section>
         <SectionTitle>Частые вопросы</SectionTitle>
         <Faq items={faq} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Новые разработки</SectionTitle>
+        <p className="text-metal max-w-prose">
+          Анонсы новых изделий и собственных разработок публикуются в разделе{" "}
+          <a href="/works" className="text-accent hover:underline">
+            «Наши работы»
+          </a>{" "}
+          и в Telegram-канале.
+        </p>
       </Section>
 
       <CtaBlock

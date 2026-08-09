@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { ButtonLink } from "@/components/Button";
-import { Card } from "@/components/Card";
 import {
   Section,
   SectionTitle,
+  ServiceBanners,
   StatGrid,
+  StepList,
+  Faq,
+  PortfolioSection,
+  ReviewsSection,
   CtaBlock,
 } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
@@ -25,16 +28,25 @@ const services = [
     description:
       "Поддержка пользователей, администрирование, информационная безопасность.",
     href: "/computer-help",
+    image: "/images/computer-help.webp",
+    imageAlt:
+      "Тёмное рабочее место IT-специалиста: ноутбук и серверная стойка с голубой подсветкой",
   },
   {
     title: "3D-моделирование и печать",
     description: "Проектирование, прототипирование и изготовление деталей.",
     href: "/3d-printing",
+    image: "/images/3d-printing.webp",
+    imageAlt:
+      "3D-принтер печатает точную механическую деталь, видны слои филамента",
   },
   {
     title: "Инженерные разработки",
     description: "Создание новых технических решений под задачи заказчика.",
     href: "/engineering",
+    image: "/images/engineering.webp",
+    imageAlt:
+      "Инженерный чертёж механической детали, светящиеся голубые линии на тёмном фоне",
   },
 ] as const;
 
@@ -43,6 +55,33 @@ const stats = [
   { value: "500+", label: "успешно реализованных проектов" },
   { value: "99%", label: "довольных клиентов" },
   { value: "Полный цикл", label: "от идеи до готового решения" },
+] as const;
+
+const steps = [
+  "Заявка и обсуждение задачи",
+  "Оценка и предложение решения",
+  "Согласование сроков и стоимости",
+  "Выполнение работ",
+  "Передача результата и поддержка",
+] as const;
+
+const faq = [
+  {
+    q: "Чем занимается VERTAXO?",
+    a: "Три направления: компьютерная помощь и защита данных, 3D-моделирование и 3D-печать, инженерные разработки под задачи заказчика.",
+  },
+  {
+    q: "Где вы работаете?",
+    a: "Москва и Московская область: выезд к клиенту, доставка изделий, а также удалённая помощь по всей России.",
+  },
+  {
+    q: "Как оставить заявку?",
+    a: "Заполните форму на сайте или напишите напрямую в Telegram — ответим в течение рабочего часа.",
+  },
+  {
+    q: "Сколько стоит консультация?",
+    a: "Первичная консультация и оценка задачи — бесплатно.",
+  },
 ] as const;
 
 const jsonLd = {
@@ -65,6 +104,8 @@ export default function HomePage() {
       <Hero
         title="От идеи до готового решения. Компьютерная помощь и защита данных, 3D-печать и моделирование и собственные инженерные разработки."
         subtitle="Надёжность, качество и быстрые решения"
+        image="/images/hero-main.webp"
+        imageAlt="Индустриально-технологическая композиция: печатная плата, сопло 3D-принтера и чертёжная сетка в голубой подсветке"
         actions={
           <>
             <ButtonLink href="#lead">Получить консультацию</ButtonLink>
@@ -77,21 +118,7 @@ export default function HomePage() {
 
       <Section>
         <SectionTitle>Направления</SectionTitle>
-        <div className="grid gap-3u lg:grid-cols-3">
-          {services.map((service) => (
-            <Link key={service.href} href={service.href} className="group">
-              <Card className="h-full flex flex-col gap-1u">
-                <h3 className="text-lg font-semibold">{service.title}</h3>
-                <p className="text-metal text-sm flex-1">
-                  {service.description}
-                </p>
-                <span className="text-accent text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Подробнее →
-                </span>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        <ServiceBanners items={services} />
         <div className="flex flex-wrap gap-2u mt-4u">
           <ButtonLink href="#lead">Получить консультацию</ButtonLink>
           <ButtonLink href="#lead" variant="secondary">
@@ -103,6 +130,26 @@ export default function HomePage() {
       <Section>
         <SectionTitle>Почему выбирают нас</SectionTitle>
         <StatGrid items={stats} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Как мы работаем</SectionTitle>
+        <StepList steps={steps} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Примеры работ</SectionTitle>
+        <PortfolioSection />
+      </Section>
+
+      <Section>
+        <SectionTitle>Отзывы</SectionTitle>
+        <ReviewsSection />
+      </Section>
+
+      <Section>
+        <SectionTitle>Частые вопросы</SectionTitle>
+        <Faq items={faq} />
       </Section>
 
       <CtaBlock source="/" />

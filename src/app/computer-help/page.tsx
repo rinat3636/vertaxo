@@ -8,8 +8,8 @@ import {
   StatGrid,
   StepList,
   Faq,
-  PortfolioTeaser,
-  ReviewsTeaser,
+  PortfolioSection,
+  ReviewsSection,
   CtaBlock,
 } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
@@ -26,42 +26,52 @@ const services = [
   {
     title: "Техническая поддержка пользователей",
     description: "Оперативное решение проблем с компьютерами и программами.",
+    icon: "support",
   },
   {
     title: "Администрирование 1С",
     description: "Установка, обновление и сопровождение конфигураций 1С.",
+    icon: "database",
   },
   {
     title: "Информационная безопасность",
     description: "Защита данных, антивирусная защита, аудит безопасности.",
+    icon: "shield",
   },
   {
     title: "Организация удалённого доступа",
     description: "Безопасный доступ к рабочим ресурсам из любой точки.",
+    icon: "remote",
   },
   {
     title: "Настройка сетей",
     description: "Проектирование и настройка локальных сетей и Wi-Fi.",
+    icon: "network",
   },
   {
     title: "Настройка рабочих мест",
     description: "Подготовка компьютеров и периферии к работе под ключ.",
+    icon: "workstation",
   },
   {
     title: "Резервное копирование данных",
     description: "Автоматическое резервное копирование и восстановление.",
+    icon: "backup",
   },
   {
     title: "Доступ к корпоративным файлам",
     description: "Файловые хранилища и разграничение прав доступа.",
+    icon: "files",
   },
   {
     title: "Разработка и создание сайтов",
     description: "Сайты для бизнеса: от лендинга до корпоративного портала.",
+    icon: "code",
   },
   {
     title: "Консультации",
     description: "Помощь в выборе техники, ПО и IT-решений для бизнеса.",
+    icon: "chat",
   },
 ] as const;
 
@@ -118,6 +128,8 @@ export default function ComputerHelpPage() {
       <Hero
         title="Компьютерная помощь и защита данных"
         subtitle="Поддержка пользователей, администрирование и информационная безопасность для дома и бизнеса в Москве и Московской области"
+        image="/images/computer-help.webp"
+        imageAlt="Тёмное рабочее место IT-специалиста: ноутбук и серверная стойка с голубой подсветкой"
         actions={<ButtonLink href="#lead">Получить консультацию</ButtonLink>}
       />
 
@@ -138,12 +150,12 @@ export default function ComputerHelpPage() {
 
       <Section>
         <SectionTitle>Примеры работ</SectionTitle>
-        <PortfolioTeaser category="computer-help" />
+        <PortfolioSection category="computer-help" />
       </Section>
 
       <Section>
         <SectionTitle>Отзывы</SectionTitle>
-        <ReviewsTeaser />
+        <ReviewsSection category="computer-help" />
       </Section>
 
       <Section>

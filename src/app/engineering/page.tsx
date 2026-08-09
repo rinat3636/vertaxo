@@ -7,8 +7,8 @@ import {
   StatGrid,
   StepList,
   Faq,
-  PortfolioTeaser,
-  ReviewsTeaser,
+  PortfolioSection,
+  ReviewsSection,
   CtaBlock,
 } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
@@ -59,6 +59,8 @@ export default function EngineeringPage() {
       <Hero
         title="Инженерные разработки"
         subtitle="Создание новых технических решений под задачи заказчика — от идеи до готового решения"
+        image="/images/engineering.webp"
+        imageAlt="Инженерный чертёж механической детали, светящиеся голубые линии на тёмном фоне"
         actions={<ButtonLink href="#lead">Обсудить задачу</ButtonLink>}
       />
 
@@ -83,12 +85,12 @@ export default function EngineeringPage() {
 
       <Section>
         <SectionTitle>Примеры работ</SectionTitle>
-        <PortfolioTeaser category="engineering" />
+        <PortfolioSection category="engineering" />
       </Section>
 
       <Section>
         <SectionTitle>Отзывы</SectionTitle>
-        <ReviewsTeaser />
+        <ReviewsSection category="engineering" />
       </Section>
 
       <Section>
