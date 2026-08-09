@@ -9,8 +9,8 @@ export function Footer() {
         <div className="flex flex-col gap-2u">
           <Logo withTagline />
           <p className="text-metal text-sm">
-            Компьютерная помощь, 3D-печать и инженерные разработки в Москве и
-            Московской области.
+            Компьютерная помощь, 3D-печать и инженерные разработки по всей
+            России.
           </p>
           <p className="text-metal text-sm">ИП Петров Илья</p>
         </div>
@@ -63,7 +63,7 @@ export function Footer() {
       </div>
       <div className="border-t border-metal/20 py-2u">
         <p className="text-center text-metal text-sm">
-          © {new Date().getFullYear()} VERTAXO. Москва и Московская область.
+          © {new Date().getFullYear()} VERTAXO. Работаем по всей России.
         </p>
       </div>
     </footer>

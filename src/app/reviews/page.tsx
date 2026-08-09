@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Section, CtaBlock } from "@/components/sections";
+import { Section, CtaBlock, PageHeader } from "@/components/sections";
 import { Card } from "@/components/Card";
 import { fetchReviews } from "@/lib/queries";
 import { SITE_URL } from "@/lib/site";
@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Отзывы клиентов | VERTAXO",
   description:
-    "Отзывы клиентов VERTAXO о компьютерной помощи, 3D-печати и инженерных разработках в Москве и Московской области.",
+    "Отзывы клиентов VERTAXO о компьютерной помощи, 3D-печати и инженерных разработках по всей России.",
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 
@@ -17,10 +17,11 @@ export default async function ReviewsPage() {
   return (
     <>
       <Section>
-        <h1 className="text-3xl md:text-5xl font-bold mb-2u">Отзывы</h1>
-        <p className="text-metal max-w-prose mb-4u">
-          Что говорят клиенты о работе с VERTAXO.
-        </p>
+        <PageHeader
+          tag="ОТЗЫВЫ"
+          title="Отзывы"
+          text="Что говорят клиенты о работе с VERTAXO."
+        />
 
         {reviews.length > 0 ? (
           <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
@@ -34,10 +35,16 @@ export default async function ReviewsPage() {
             ))}
           </div>
         ) : (
-          <p className="text-metal">
-            Раздел наполняется. Уже работали с нами? Поделитесь впечатлением
-            через форму ниже.
-          </p>
+          <div className="relative overflow-hidden bg-surface border border-metal/20 rounded-card p-4u">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 blueprint-grid opacity-40"
+            />
+            <p className="relative text-metal max-w-prose">
+              Раздел наполняется. Уже работали с нами? Поделитесь впечатлением
+              через форму ниже.
+            </p>
+          </div>
         )}
       </Section>
 

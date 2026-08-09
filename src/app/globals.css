@@ -48,21 +48,18 @@ h3 {
   font-family: var(--font-heading);
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 28s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+.blueprint-grid {
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--color-accent) 8%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-accent) 8%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
 }
 
 @keyframes hero-scan {

@@ -44,6 +44,29 @@ export function SectionTitle({
   );
 }
 
+export function PageHeader({
+  tag,
+  title,
+  text,
+}: {
+  tag: string;
+  title: string;
+  text?: string;
+}) {
+  return (
+    <header className="mb-4u">
+      <div className="flex items-center gap-2u mb-2u">
+        <span className="font-mono text-accent text-xs tracking-widest">
+          {`// ${tag}`}
+        </span>
+        <span className="h-px flex-1 bg-metal/20" aria-hidden="true" />
+      </div>
+      <h1 className="text-3xl md:text-5xl font-bold mb-2u">{title}</h1>
+      {text && <p className="text-metal max-w-prose">{text}</p>}
+    </header>
+  );
+}
+
 export function ServiceCards({
   items,
 }: {
@@ -56,24 +79,20 @@ export function ServiceCards({
   return (
     <div className="grid gap-3u sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item, i) => (
-        <Card
-          key={item.title}
-          className={`flex flex-col gap-2u ${i === 0 ? "sm:col-span-2 lg:col-span-2 sm:flex-row sm:items-start sm:gap-3u" : ""}`}
-        >
-          <div className={i === 0 ? "sm:shrink-0" : ""}>
-            {item.icon && icons[item.icon]}
+        <Card key={item.title} className="flex flex-col gap-2u">
+          <div className="flex items-start justify-between">
+            <span className="inline-flex items-center justify-center h-6u w-6u rounded-card border border-accent-secondary/30 bg-bg">
+              {item.icon && icons[item.icon]}
+            </span>
+            <span className="font-mono text-metal/40 text-xs" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
           </div>
-          <div className="flex flex-col gap-2u flex-1">
-            <h3
-              className={i === 0 ? "text-xl font-semibold" : "text-lg font-semibold"}
-            >
-              {item.title}
-            </h3>
-            <p className="text-metal text-sm flex-1">{item.description}</p>
-            <Link href="#lead" className="text-accent text-sm hover:underline">
-              Оставить заявку →
-            </Link>
-          </div>
+          <h3 className="text-lg font-semibold">{item.title}</h3>
+          <p className="text-metal text-sm flex-1">{item.description}</p>
+          <Link href="#lead" className="text-accent text-sm hover:underline">
+            Оставить заявку →
+          </Link>
         </Card>
       ))}
     </div>
@@ -92,38 +111,38 @@ export function ServiceBanners({
   }[];
 }) {
   return (
-    <div className="grid gap-3u lg:grid-cols-2 lg:grid-rows-2">
+    <div className="grid gap-3u lg:grid-cols-3">
       {items.map((item, i) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={`group ${i === 0 ? "lg:row-span-2" : ""}`}
-        >
-          <article
-            className={`relative h-full ${i === 0 ? "min-h-[300px] lg:min-h-full" : "min-h-[170px]"} rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end`}
-          >
+        <Link key={item.href} href={item.href} className="group">
+          <article className="relative h-full min-h-[360px] rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60 group-hover:-translate-y-1u flex flex-col justify-end">
             <Image
               src={item.image}
               alt={item.imageAlt}
               fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
             />
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-transparent"
             />
+            <span
+              aria-hidden="true"
+              className="absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
+            >
+              {`// 0${i + 1}`}
+            </span>
             <div className="relative p-3u">
-              <h3
-                className={`font-semibold mb-1u ${i === 0 ? "text-2xl md:text-3xl" : "text-xl"}`}
-              >
-                {item.title}
-              </h3>
+              <h3 className="font-semibold text-xl mb-1u">{item.title}</h3>
               <p className="text-metal text-sm mb-2u">{item.description}</p>
-              <span className="inline-block rounded-card bg-accent text-bg font-semibold text-sm px-2u py-1u opacity-0 translate-y-1u transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0">
-                Подробнее
+              <span className="inline-flex items-center gap-1u text-accent text-sm font-semibold transition-transform duration-300 ease-out group-hover:translate-x-1u">
+                Подробнее →
               </span>
             </div>
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 left-0 h-[2px] w-0 bg-accent transition-all duration-300 ease-out group-hover:w-full"
+            />
           </article>
         </Link>
       ))}
@@ -172,31 +191,26 @@ export function StatGrid({
 }: {
   items: readonly { value: string; label: string }[];
 }) {
-  const track = (
-    <div className="flex items-stretch shrink-0">
+  return (
+    <dl className="grid grid-cols-2 lg:grid-cols-4 border border-metal/20 rounded-card overflow-hidden bg-surface">
       {items.map((item, i) => (
         <div
-          key={`${item.label}-${i}`}
-          className="flex items-center gap-2u px-4u py-3u border-r border-metal/20 whitespace-nowrap"
+          key={item.label}
+          className={`relative p-3u ${i % 2 === 0 ? "border-r border-metal/20" : ""} ${i < 2 ? "border-b border-metal/20 lg:border-b-0" : ""} ${i < 3 ? "lg:border-r lg:border-metal/20" : ""}`}
         >
-          <span className="font-mono font-bold text-2xl md:text-3xl text-accent">
+          <span
+            aria-hidden="true"
+            className="absolute top-0 left-3u h-[2px] w-4u bg-accent"
+          />
+          <dd className="font-mono font-bold text-2xl md:text-3xl text-accent mb-1u">
             {item.value}
-          </span>
-          <span className="text-metal text-xs uppercase tracking-wider max-w-[10em] whitespace-normal">
+          </dd>
+          <dt className="text-metal text-xs uppercase tracking-wider">
             {item.label}
-          </span>
+          </dt>
         </div>
       ))}
-    </div>
-  );
-
-  return (
-    <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden border-y border-metal/20 bg-surface motion-reduce:overflow-x-auto">
-      <div className="flex motion-reduce:animate-none animate-marquee motion-reduce:w-full">
-        {track}
-        {track}
-      </div>
-    </div>
+    </dl>
   );
 }
 
@@ -259,13 +273,22 @@ export async function PortfolioSection({ category }: { category?: string }) {
 
   if (filtered.length === 0) {
     return (
-      <div className="bg-surface border border-metal/20 rounded-card p-4u flex flex-col items-start gap-2u">
-        <p className="text-metal">
-          Реальные проекты по направлению — в разделе «Наши работы».
-        </p>
-        <ButtonLink href={href} variant="secondary">
-          Смотреть работы
-        </ButtonLink>
+      <div className="relative overflow-hidden bg-surface border border-metal/20 rounded-card p-4u">
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 blueprint-grid opacity-40"
+        />
+        <div className="relative flex flex-col items-start gap-2u">
+          <span className="font-mono text-accent-secondary text-xs tracking-widest">
+            {"// ПОРТФОЛИО"}
+          </span>
+          <p className="text-metal max-w-prose">
+            Реальные проекты по направлению — в разделе «Наши работы».
+          </p>
+          <ButtonLink href={href} variant="secondary">
+            Смотреть работы
+          </ButtonLink>
+        </div>
       </div>
     );
   }
@@ -311,11 +334,22 @@ export async function ReviewsSection({ category }: { category?: string }) {
 
   if (shown.length === 0) {
     return (
-      <div className="bg-surface border border-metal/20 rounded-card p-4u flex flex-col items-start gap-2u">
-        <p className="text-metal">Отзывы наших клиентов — в отдельном разделе.</p>
-        <ButtonLink href="/reviews" variant="secondary">
-          Читать отзывы
-        </ButtonLink>
+      <div className="relative overflow-hidden bg-surface border border-metal/20 rounded-card p-4u">
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 blueprint-grid opacity-40"
+        />
+        <div className="relative flex flex-col items-start gap-2u">
+          <span className="font-mono text-accent-secondary text-xs tracking-widest">
+            {"// ОТЗЫВЫ"}
+          </span>
+          <p className="text-metal max-w-prose">
+            Отзывы наших клиентов — в отдельном разделе.
+          </p>
+          <ButtonLink href="/reviews" variant="secondary">
+            Читать отзывы
+          </ButtonLink>
+        </div>
       </div>
     );
   }
@@ -350,7 +384,20 @@ export function CtaBlock({
 }) {
   return (
     <Section id="lead" className="scroll-mt-8u">
-      <div className="grid gap-4u lg:grid-cols-2 items-start">
+      <div className="relative overflow-hidden rounded-card border border-metal/20 bg-surface p-3u md:p-6u">
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 blueprint-grid opacity-30"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 h-4u w-4u border-t-2 border-l-2 border-accent-secondary/60"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute bottom-0 right-0 h-4u w-4u border-b-2 border-r-2 border-accent/60"
+        />
+        <div className="relative grid gap-4u lg:grid-cols-2 items-start">
         <div>
           <h2 className="text-2xl md:text-4xl font-bold mb-2u">{title}</h2>
           <p className="text-metal max-w-prose">{text}</p>
@@ -369,7 +416,8 @@ export function CtaBlock({
             </ButtonLink>
           </div>
         </div>
-        <LeadForm source={source} />
+          <LeadForm source={source} />
+        </div>
       </div>
     </Section>
   );

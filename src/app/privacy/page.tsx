@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Section } from "@/components/sections";
+import { Section, PageHeader } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,9 +13,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <Section>
-      <h1 className="text-3xl md:text-4xl font-bold mb-4u">
-        Политика конфиденциальности
-      </h1>
+      <PageHeader tag="ДОКУМЕНТЫ" title="Политика конфиденциальности" />
       <div className="flex flex-col gap-3u max-w-prose text-metal">
         <p>
           Настоящая политика конфиденциальности действует в отношении

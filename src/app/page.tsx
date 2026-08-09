@@ -16,9 +16,9 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title:
-    "VERTAXO — компьютерная помощь, 3D-печать и инженерные разработки в Москве и МО",
+    "VERTAXO — компьютерная помощь, 3D-печать и инженерные разработки по всей России",
   description:
-    "Компьютерная помощь и защита данных, 3D-моделирование и печать, инженерные разработки в Москве и Московской области. От идеи до готового решения — получите консультацию.",
+    "Компьютерная помощь и защита данных, 3D-моделирование и печать, инженерные разработки по всей России. От идеи до готового решения — получите консультацию.",
   alternates: { canonical: SITE_URL },
 };
 
@@ -67,20 +67,24 @@ const steps = [
 
 const faq = [
   {
-    q: "Чем занимается VERTAXO?",
-    a: "Три направления: компьютерная помощь и защита данных, 3D-моделирование и 3D-печать, инженерные разработки под задачи заказчика.",
+    q: "Сколько стоит ваша работа и как узнать цену заранее?",
+    a: "Первичная консультация и оценка задачи — бесплатно. Стоимость называем до начала работ и фиксируем — без скрытых доплат в процессе.",
   },
   {
-    q: "Где вы работаете?",
-    a: "Москва и Московская область: выезд к клиенту, доставка изделий, а также удалённая помощь по всей России.",
+    q: "Выезжаете ли вы на дом или в офис?",
+    a: "Да, выезжаем к клиентам, а большинство задач по компьютерной помощи решаем удалённо в тот же день. Изделия отправляем по всей России.",
   },
   {
-    q: "Как оставить заявку?",
-    a: "Заполните форму на сайте или напишите напрямую в Telegram — ответим в течение рабочего часа.",
+    q: "Даёте ли вы гарантию на работы и изделия?",
+    a: "Да. На выполненные работы и напечатанные изделия действует гарантия; если проблема повторится — устраним бесплатно.",
   },
   {
-    q: "Сколько стоит консультация?",
-    a: "Первичная консультация и оценка задачи — бесплатно.",
+    q: "Работаете ли вы с организациями и по договору?",
+    a: "Да, работаем с юридическими лицами: договор, счёт, закрывающие документы, возможно абонентское IT-обслуживание.",
+  },
+  {
+    q: "Можно ли заказать нестандартное изделие, которого нет в продаже?",
+    a: "Да, это наш профиль: разработаем 3D-модель по эскизу или образцу, напечатаем деталь или спроектируем устройство под вашу задачу.",
   },
 ] as const;
 
@@ -90,7 +94,7 @@ const jsonLd = {
   name: "VERTAXO",
   slogan: "От идеи до готового решения",
   url: SITE_URL,
-  areaServed: ["Москва", "Московская область"],
+  areaServed: "Россия",
   founder: { "@type": "Person", name: "Илья Петров" },
 };
 
@@ -121,12 +125,6 @@ export default function HomePage() {
       <Section>
         <SectionTitle index={1}>Направления</SectionTitle>
         <ServiceBanners items={services} />
-        <div className="flex flex-wrap gap-2u mt-4u">
-          <ButtonLink href="#lead">Получить консультацию</ButtonLink>
-          <ButtonLink href="#lead" variant="secondary">
-            Оставить заявку
-          </ButtonLink>
-        </div>
       </Section>
 
       <Section>
@@ -156,8 +154,20 @@ export default function HomePage() {
 
       <Section>
         <SectionTitle index={7}>О компании</SectionTitle>
-        <div className="grid gap-4u lg:grid-cols-[220px_1fr] items-start">
-          <div className="w-[220px] aspect-square rounded-card border border-metal/30 bg-surface flex flex-col items-center justify-center gap-2u text-center px-2u">
+        <div className="relative overflow-hidden rounded-card border border-metal/20 bg-surface p-3u md:p-4u grid gap-4u lg:grid-cols-[220px_1fr] items-start">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 blueprint-grid opacity-30"
+          />
+          <div className="relative w-[220px] max-w-full aspect-square rounded-card border border-dashed border-accent/40 bg-bg flex flex-col items-center justify-center gap-2u text-center px-2u">
+            <span
+              aria-hidden="true"
+              className="absolute top-0 left-0 h-2u w-2u border-t border-l border-accent-secondary/70"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 right-0 h-2u w-2u border-b border-r border-accent/70"
+            />
             <svg
               width="48"
               height="48"
@@ -170,11 +180,11 @@ export default function HomePage() {
               <circle cx="12" cy="8" r="4" />
               <path d="M4 20c0-4 3.5-7 8-7s8 3 8 7" />
             </svg>
-            <p className="text-metal text-xs">
+            <p className="text-metal text-xs font-mono">
               Фото Ильи появится здесь после согласования
             </p>
           </div>
-          <div>
+          <div className="relative">
             <h3 className="text-lg font-semibold mb-2u">Илья Петров</h3>
             <p className="text-metal max-w-prose">
               Основатель VERTAXO. Больше 10 лет работает на стыке IT,
