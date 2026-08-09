@@ -89,7 +89,7 @@ export default function EngineeringPage() {
         title="Инженерные разработки"
         subtitle="Создание новых технических решений под задачи заказчика — от идеи до готового решения"
         image="/images/engineering.webp"
-        imageAlt="Инженерный чертёж механической детали, светящиеся голубые линии на тёмном фоне"
+        imageAlt="Ноутбук с 3D-моделью детали в CAD-программе, рядом чертёж и штангенциркуль на столе инженера"
         tag="ИНЖЕНЕРНЫЕ РАЗРАБОТКИ"
         stats={stats}
         actions={<ButtonLink href="#lead">Обсудить задачу</ButtonLink>}

@@ -137,7 +137,7 @@ export default function PrintingPage() {
         title="3D-моделирование и 3D-печать"
         subtitle="Качественные изделия. Разработка индивидуальных моделей"
         image="/images/3d-printing.webp"
-        imageAlt="3D-принтер печатает точную механическую деталь, видны слои филамента"
+        imageAlt="Крупный план сопла 3D-принтера, печатающего механическую деталь, голубая подсветка"
         tag="3D-ПЕЧАТЬ"
         stats={stats}
         actions={<ButtonLink href="#lead">Оставить заявку</ButtonLink>}
