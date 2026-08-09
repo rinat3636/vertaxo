@@ -6,6 +6,7 @@ import { LeadForm } from "./LeadForm";
 import { ButtonLink } from "./Button";
 import { icons, type IconName } from "./icons";
 import { fetchWorks, fetchReviews } from "@/lib/queries";
+import { CONTACTS } from "@/lib/site";
 
 export function Section({
   children,
@@ -353,17 +354,20 @@ export function CtaBlock({
         <div>
           <h2 className="text-2xl md:text-4xl font-bold mb-2u">{title}</h2>
           <p className="text-metal max-w-prose">{text}</p>
-          <p className="text-metal mt-2u text-sm">
-            Или напишите напрямую:{" "}
-            <Link
-              href="https://t.me/Ilya_petrov9988"
+          <p className="text-metal mt-3u text-sm mb-2u">Или напишите напрямую:</p>
+          <div className="flex flex-wrap gap-2u">
+            <ButtonLink
+              href={CONTACTS.telegram}
+              variant="secondary"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:underline"
             >
               Telegram
-            </Link>
-          </p>
+            </ButtonLink>
+            <ButtonLink href={CONTACTS.maxPhoneHref} variant="secondary">
+              MAX: {CONTACTS.maxPhone}
+            </ButtonLink>
+          </div>
         </div>
         <LeadForm source={source} />
       </div>
