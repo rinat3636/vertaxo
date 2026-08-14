@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       {
         url: "/images/og-image.jpg",
         width: 1200,
-        height: 630,
+        height: 640,
         alt: "matritsa — От идеи до готового решения",
       },
     ],

@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/engineering`,
     images: [
       {
-        url: "/images/engineering.webp",
-        width: 1024,
-        height: 1536,
+        url: "/images/og-engineering.jpg",
+        width: 1200,
+        height: 640,
         alt: "Инженерные разработки matritsa",
       },
     ],
@@ -107,7 +107,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Инженерные разработки MATRITSA",
-  image: `${SITE_URL}/images/engineering.webp`,
+  image: `${SITE_URL}/images/og-engineering.jpg`,
   "@id": `${SITE_URL}/engineering`,
   url: `${SITE_URL}/engineering`,
   telephone: "+79623629988",

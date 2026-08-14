@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/computer-help`,
     images: [
       {
-        url: "/images/computer-help.webp",
-        width: 1024,
-        height: 1536,
+        url: "/images/og-computer-help.jpg",
+        width: 1200,
+        height: 640,
         alt: "IT поддержка организаций matritsa",
       },
     ],
@@ -140,7 +140,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "IT поддержка организаций MATRITSA",
-  image: `${SITE_URL}/images/computer-help.webp`,
+  image: `${SITE_URL}/images/og-computer-help.jpg`,
   "@id": `${SITE_URL}/computer-help`,
   url: `${SITE_URL}/computer-help`,
   telephone: "+79623629988",

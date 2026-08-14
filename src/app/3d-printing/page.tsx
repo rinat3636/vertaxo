@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/3d-printing`,
     images: [
       {
-        url: "/images/3d-printing.webp",
-        width: 1024,
-        height: 1536,
+        url: "/images/og-3d-printing.jpg",
+        width: 1200,
+        height: 640,
         alt: "3D-печать на заказ matritsa",
       },
     ],
@@ -149,7 +149,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "3D-печать и 3D-моделирование MATRITSA",
-  image: `${SITE_URL}/images/3d-printing.webp`,
+  image: `${SITE_URL}/images/og-3d-printing.jpg`,
   "@id": `${SITE_URL}/3d-printing`,
   url: `${SITE_URL}/3d-printing`,
   telephone: "+79623629988",
