@@ -32,7 +32,34 @@ export const metadata: Metadata = {
   },
   description:
     "MATRITSA — компьютерная помощь и защита данных, 3D-моделирование и печать, инженерные разработки в Москве и МО. Удалённо по всей России. От идеи до готового решения.",
+  keywords: [
+    "компьютерная помощь",
+    "IT поддержка организаций",
+    "защита данных",
+    "3D печать",
+    "3D моделирование",
+    "инженерные разработки",
+    "Москва",
+    "Московская область",
+    "удалённо по России",
+    "FDM печать",
+    "прототипирование",
+    "серверы",
+    "настройка сети",
+  ],
+  authors: [{ name: "ИП Петров Илья" }],
+  creator: "MATRITSA",
+  publisher: "MATRITSA",
+  formatDetection: {
+    telephone: false,
+  },
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
+  verification: {
+    yandex: "yandex_verification_code",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico?v=4", sizes: "any" },
@@ -47,7 +74,8 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     url: SITE_URL,
     siteName: SITE_NAME,
-    description: SITE_TAGLINE,
+    title: `${SITE_NAME} — компьютерная помощь, 3D-печать и инженерные разработки`,
+    description: "IT поддержка организаций, 3D-моделирование и печать, инженерные разработки. Выезды по Москве и МО, удалённо по всей России.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -69,6 +97,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="ru"
       className={`${unbounded.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta name="geo.region" content="RU" />
+        <meta name="geo.placename" content="Россия" />
+        <link rel="canonical" href={SITE_URL} />
+      </head>
       <body className="min-h-full flex flex-col bg-bg text-text-primary">
         <ScrollProgress />
         <Header />

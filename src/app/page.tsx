@@ -108,8 +108,43 @@ const jsonLd = {
   name: "matritsa",
   slogan: "От идеи до готового решения.",
   url: SITE_URL,
-  areaServed: ["Москва", "Московская область", "Россия"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Москва",
+    addressRegion: "Московская область",
+    addressCountry: "RU",
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Москва",
+    },
+    {
+      "@type": "State",
+      name: "Московская область",
+    },
+    {
+      "@type": "Country",
+      name: "Россия",
+    },
+  ],
   founder: { "@type": "Person", name: "Илья Петров" },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "55.751244",
+    longitude: "37.618423",
+  },
+  description: "IT поддержка организаций, 3D-моделирование и печать, инженерные разработки. Выезды по Москве и МО, удалённо по всей России.",
+  priceRange: "$$",
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: "55.751244",
+      longitude: "37.618423",
+    },
+    geoRadius: "100000",
+  },
 };
 
 export default function HomePage() {
