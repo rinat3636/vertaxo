@@ -219,23 +219,23 @@ export default function PrintingPage() {
 
       <Section>
         <SectionTitle index={4}>О направлении</SectionTitle>
-        <p className="text-metal max-w-prose mb-4u text-sm sm:text-base">
+        <p className="text-metal max-w-prose mb-4u text-sm md:text-base">
           Работаем по технологии FDM — послойное наплавление термопластика.
           Полный цикл: от разработки модели и подготовки к печати до
           изготовления готовых изделий, прототипирования и мелкосерийного
           производства. Подберём материал под задачу — по прочности,
           термостойкости, гибкости и внешнему виду.
         </p>
-        <div className="flex flex-wrap gap-2u sm:gap-3u max-w-3xl">
+        <div className="flex flex-wrap gap-2u md:gap-3u max-w-3xl">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="inline-flex items-center gap-1.5u sm:gap-2u px-2.5u sm:px-3u py-1.5u sm:py-2u rounded-full border border-accent/30 bg-accent/5"
+              className="inline-flex items-center gap-1.5u md:gap-2u px-2.5u md:px-3u py-1.5u md:py-2u rounded-full border border-accent/30 bg-accent/5"
             >
-              <span className="font-mono text-accent text-xs sm:text-sm font-semibold shrink-0">
+              <span className="font-mono text-accent text-xs md:text-sm font-semibold shrink-0">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="text-text-primary text-xs sm:text-sm">{step}</span>
+              <span className="text-text-primary text-xs md:text-sm">{step}</span>
             </div>
           ))}
         </div>
