@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# server-side runtime files
+next.log
+telegram_bot.py
+telegram_test.py
+telegram_subscribers.json
