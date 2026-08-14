@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Logo } from "./Logo";
 import { ButtonLink } from "./Button";
 import { NAV_ITEMS, CONTACTS } from "@/lib/site";
@@ -9,9 +9,22 @@ import { reachGoal } from "./Metrika";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-metal/20">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "max-xl:bg-transparent max-xl:backdrop-blur-none max-xl:border-transparent"
+          : "bg-bg/95 backdrop-blur-md border-b border-metal/20"
+      } xl:bg-bg/95 xl:backdrop-blur-md xl:border-b xl:border-metal/20`}>
       <nav className="mx-auto max-w-7xl px-2u py-1u">
         <div className="flex items-center justify-between gap-2u">
           {/* Logo */}
