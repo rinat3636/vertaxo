@@ -219,13 +219,26 @@ export default function PrintingPage() {
 
       <Section>
         <SectionTitle index={4}>О направлении</SectionTitle>
-        <p className="text-metal max-w-prose">
+        <p className="text-metal max-w-prose mb-4u">
           Работаем по технологии FDM — послойное наплавление термопластика.
           Полный цикл: от разработки модели и подготовки к печати до
           изготовления готовых изделий, прототипирования и мелкосерийного
           производства. Подберём материал под задачу — по прочности,
           термостойкости, гибкости и внешнему виду.
         </p>
+        <div className="flex flex-wrap gap-3u max-w-3xl">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="inline-flex items-center gap-2u px-3u py-2u rounded-full border border-accent/30 bg-accent/5"
+            >
+              <span className="font-mono text-accent text-sm font-semibold">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="text-text-primary text-sm">{step}</span>
+            </div>
+          ))}
+        </div>
       </Section>
 
       <Section>
