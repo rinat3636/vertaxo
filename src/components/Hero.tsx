@@ -53,10 +53,7 @@ export function Hero({
                 aria-hidden="true"
                 className="h-1u w-1u rounded-full bg-accent inline-block animate-pulse"
               />
-              VERTAXO_OS // {tag}
-            </span>
-            <span className="hidden sm:inline text-metal/60">
-              МОСКВА И МО · ВСЯ РОССИЯ УДАЛЁННО
+              matrit<span className="text-accent">s</span>a_OS // {tag}
             </span>
           </div>
 
@@ -65,8 +62,10 @@ export function Hero({
             <div className="relative z-10 px-2u py-3u sm:px-3u lg:p-4u flex flex-col justify-center">
               <ScanlineGrid />
               <div className="relative border-l-2 border-accent pl-2u sm:pl-3u">
-                <p className="font-mono text-accent text-sm mb-1u tracking-widest">
-                  {"// VERTAXO"}
+                <p className="font-mono text-accent text-sm mb-1u tracking-widest lowercase">
+                  {"// matrit"}
+                  <span className="text-accent">s</span>
+                  {"a"}
                 </p>
                 <h1
                   className={`font-bold leading-[1.15] md:leading-[1.1] mb-2u break-words ${

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Metrika } from "@/components/Metrika";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { AboutSection } from "@/components/sections";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -25,10 +26,41 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "VERTAXO — компьютерная помощь, 3D-печать и инженерные разработки по всей России",
+  title: {
+    default: `${SITE_NAME} — компьютерная помощь, 3D-печать и инженерные разработки в Москве и МО`,
+    template: `%s | ${SITE_NAME}`,
+  },
   description:
-    "VERTAXO — компьютерная помощь и защита данных, 3D-моделирование и печать, инженерные разработки по всей России. От идеи до готового решения. Получите консультацию.",
+    "MATRITSA — компьютерная помощь и защита данных, 3D-моделирование и печать, инженерные разработки в Москве и МО. Удалённо по всей России. От идеи до готового решения.",
+  metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=4", sizes: "any" },
+      { url: "/favicon-16.png?v=4", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png?v=4", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png?v=4", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=4", sizes: "180x180", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    description: SITE_TAGLINE,
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MATRITSA — От идеи до готового решения",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/hero-main.webp"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

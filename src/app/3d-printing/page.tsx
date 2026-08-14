@@ -18,12 +18,21 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "3D-печать и 3D-моделирование на заказ в Москве | matritsa",
   description:
-    "3D-печать и 3D-моделирование на заказ с доставкой по всей России: разработка моделей, прототипирование, мелкосерийное производство FDM. Качественные изделия — оставьте заявку.",
+    "3D-печать и моделирование на заказ: прототипы, детали, корпуса. Доставка по России. PLA, PETG, ABS, TPU. От 500₽. Звоните: +7 962 362 99 88",
   alternates: { canonical: `${SITE_URL}/3d-printing` },
+  keywords: [
+    "3d печать на заказ москва",
+    "3d моделирование на заказ",
+    "печать пластиком москва",
+    "изготовление деталей 3d принтер",
+    "прототипирование 3d печать",
+    "реверс инжиниринг 3d",
+    "мелкосерийное производство fdm",
+  ],
   openGraph: {
     title: "3D-печать и 3D-моделирование на заказ в Москве",
     description:
-      "Разработка 3D-моделей, прототипирование, мелкосерийное производство FDM. Доставка по всей России.",
+      "Разработка моделей, прототипы, изделия из пластика. Доставка по России. От 500₽.",
     url: `${SITE_URL}/3d-printing`,
     images: [
       {
@@ -138,11 +147,42 @@ const faq = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "3D-печать и 3D-моделирование на заказ",
-  provider: { "@type": "LocalBusiness", name: "matritsa", url: SITE_URL },
-  areaServed: "Россия",
-  serviceType: "3D-печать",
+  "@type": "ProfessionalService",
+  name: "3D-печать и 3D-моделирование MATRITSA",
+  image: `${SITE_URL}/images/3d-printing.webp`,
+  "@id": `${SITE_URL}/3d-printing`,
+  url: `${SITE_URL}/3d-printing`,
+  telephone: "+79623629988",
+  priceRange: "от 500₽",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Москва",
+    addressRegion: "Московская область",
+    addressCountry: "RU",
+  },
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "State", name: "Московская область" },
+    { "@type": "Country", name: "Россия" },
+  ],
+  serviceType: "3D-печать и 3D-моделирование",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "MATRITSA",
+    url: SITE_URL,
+    telephone: "+79623629988",
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "RUB",
+    price: "500",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "500",
+      priceCurrency: "RUB",
+      unitText: "изделие",
+    },
+  },
 };
 
 export default function PrintingPage() {

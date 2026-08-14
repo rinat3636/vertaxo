@@ -63,7 +63,7 @@ export async function POST(request: Request) {
   }
 
   const text = [
-    "Новая заявка с сайта VERTAXO",
+    "Новая заявка с сайта MATRITSA",
     `Страница: ${source}`,
     `Имя: ${name}`,
     `Контакт: ${contact}`,

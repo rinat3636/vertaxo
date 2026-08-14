@@ -3,9 +3,9 @@ import { Section, PageHeader } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Политика конфиденциальности | VERTAXO",
+  title: "Политика конфиденциальности | MATRITSA",
   description:
-    "Политика конфиденциальности сайта vertaxo.ru: какие персональные данные обрабатываются, для каких целей и как они защищены.",
+    "Политика конфиденциальности сайта matritsa.tech: какие персональные данные обрабатываются, для каких целей и как они защищены.",
   alternates: { canonical: `${SITE_URL}/privacy` },
   robots: { index: false, follow: true },
 };
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <div className="flex flex-col gap-3u max-w-prose text-metal">
         <p>
           Настоящая политика конфиденциальности действует в отношении
-          информации, которую сайт vertaxo.ru (далее — «Сайт») может получить о
+          информации, которую сайт matritsa.tech (далее — «Сайт») может получить о
           пользователе во время использования Сайта.
         </p>
         <h2 className="text-xl font-semibold text-text-primary">

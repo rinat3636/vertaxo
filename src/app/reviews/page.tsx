@@ -5,9 +5,9 @@ import { fetchReviews } from "@/lib/queries";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Отзывы клиентов | VERTAXO",
+  title: "Отзывы клиентов | MATRITSA",
   description:
-    "Отзывы клиентов VERTAXO о компьютерной помощи, 3D-печати и инженерных разработках по всей России.",
+    "Отзывы клиентов MATRITSA о компьютерной помощи, 3D-печати и инженерных разработках по всей России.",
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 
@@ -20,7 +20,7 @@ export default async function ReviewsPage() {
         <PageHeader
           tag="ОТЗЫВЫ"
           title="Отзывы"
-          text="Что говорят клиенты о работе с VERTAXO."
+          text="Что говорят клиенты о работе с MATRITSA."
         />
 
         {reviews.length > 0 ? (

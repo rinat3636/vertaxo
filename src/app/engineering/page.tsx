@@ -14,18 +14,25 @@ import {
 } from "@/components/sections";
 import { SITE_URL } from "@/lib/site";
 
-// Черновик: финальный список услуг направления ожидается от заказчика
-// (SPEC.md, открытый вопрос №1). До получения — noindex, не рекламировать.
 export const metadata: Metadata = {
-  title: "Инженерные разработки под задачи заказчика | matritsa",
+  title: "Инженерные разработки на заказ в Москве | matritsa",
   description:
-    "Инженерные разработки на заказ в Москве и МО: проектирование и создание новых технических решений под задачи заказчика. От идеи до готового решения.",
+    "Инженерные разработки: проектирование, прототипы, нестандартные механизмы. 25+ лет опыта. Москва и МО. От идеи до готового решения. +7 962 362 99 88",
   alternates: { canonical: `${SITE_URL}/engineering` },
+  keywords: [
+    "инженерные разработки на заказ",
+    "разработка механизмов москва",
+    "проектирование устройств",
+    "прототипирование изделий",
+    "нестандартные механизмы на заказ",
+    "конструкторская документация",
+    "автоматизация процессов",
+  ],
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Инженерные разработки под задачи заказчика",
+    title: "Инженерные разработки на заказ в Москве",
     description:
-      "Проектирование, прототипирование, нестандартные технические решения. Москва и МО.",
+      "Проектирование, прототипы, нестандартные решения. 25+ лет опыта. От идеи до изделия.",
     url: `${SITE_URL}/engineering`,
     images: [
       {
@@ -96,9 +103,41 @@ const faq = [
   },
 ] as const;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Инженерные разработки MATRITSA",
+  image: `${SITE_URL}/images/engineering.webp`,
+  "@id": `${SITE_URL}/engineering`,
+  url: `${SITE_URL}/engineering`,
+  telephone: "+79623629988",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Москва",
+    addressRegion: "Московская область",
+    addressCountry: "RU",
+  },
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "State", name: "Московская область" },
+    { "@type": "Country", name: "Россия" },
+  ],
+  serviceType: "Инженерные разработки",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "MATRITSA",
+    url: SITE_URL,
+    telephone: "+79623629988",
+  },
+};
+
 export default function EngineeringPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero
         title="Инженерные разработки"
         subtitle="Создание новых технических решений под задачи заказчика — от идеи до готового решения"

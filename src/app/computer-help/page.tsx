@@ -15,15 +15,23 @@ import {
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title:
-    "IT поддержка организаций и IT-администрирование в Москве и области | matritsa",
+  title: "IT поддержка организаций в Москве и МО | matritsa",
   description:
-    "IT поддержка организаций: выезд в Москве и Московской области, удалённая поддержка по всей России. Поддержка пользователей, администрирование серверов, информационная безопасность и 1С, настройка сетей, резервное копирование. Оставьте заявку — ответим быстро.",
+    "IT поддержка организаций: выезд в Москве и области, удалённо по России. Администрирование серверов, 1С, сети, безопасность. От 5000₽/мес. Звоните: +7 962 362 99 88",
   alternates: { canonical: `${SITE_URL}/computer-help` },
+  keywords: [
+    "it поддержка организаций москва",
+    "абонентское it обслуживание",
+    "системный администратор аутсорсинг",
+    "администрирование серверов",
+    "техподдержка 1с",
+    "настройка корпоративной сети",
+    "информационная безопасность для бизнеса",
+  ],
   openGraph: {
-    title: "IT поддержка организаций и IT-администрирование в Москве и области",
+    title: "IT поддержка организаций в Москве и МО",
     description:
-      "Поддержка пользователей, администрирование серверов, информационная безопасность и 1С, сети. Выезд в Москве и МО, удалённо по всей России.",
+      "Администрирование серверов, 1С, сети, безопасность. Выезд в Москве и МО, удалённо по России. От 5000₽/мес.",
     url: `${SITE_URL}/computer-help`,
     images: [
       {
@@ -130,11 +138,47 @@ const faq = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "IT поддержка организаций",
-  provider: { "@type": "LocalBusiness", name: "matritsa", url: SITE_URL },
-  areaServed: ["Москва", "Московская область", "Россия"],
+  "@type": "ProfessionalService",
+  name: "IT поддержка организаций MATRITSA",
+  image: `${SITE_URL}/images/computer-help.webp`,
+  "@id": `${SITE_URL}/computer-help`,
+  url: `${SITE_URL}/computer-help`,
+  telephone: "+79623629988",
+  priceRange: "от 5000₽",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Москва",
+    addressRegion: "Московская область",
+    addressCountry: "RU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 55.755826,
+    longitude: 37.6173,
+  },
+  areaServed: [
+    { "@type": "City", name: "Москва" },
+    { "@type": "State", name: "Московская область" },
+    { "@type": "Country", name: "Россия" },
+  ],
   serviceType: "IT поддержка организаций",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "MATRITSA",
+    url: SITE_URL,
+    telephone: "+79623629988",
+  },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "RUB",
+    price: "5000",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "5000",
+      priceCurrency: "RUB",
+      unitText: "месяц",
+    },
+  },
 };
 
 export default function ComputerHelpPage() {

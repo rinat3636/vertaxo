@@ -7,9 +7,9 @@ import { fetchWorks } from "@/lib/queries";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Наши работы — портфолио VERTAXO",
+  title: "Наши работы — портфолио MATRITSA",
   description:
-    "Портфолио VERTAXO: реализованные проекты по компьютерной помощи, 3D-печати и инженерным разработкам по всей России.",
+    "Портфолио MATRITSA: реализованные проекты по компьютерной помощи, 3D-печати и инженерным разработкам по всей России.",
   alternates: { canonical: `${SITE_URL}/works` },
 };
 

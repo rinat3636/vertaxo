@@ -1,6 +1,6 @@
-export const SITE_NAME = "VERTAXO";
-export const SITE_TAGLINE = "От идеи до готового решения";
-export const SITE_URL = "https://vertaxo.ru";
+export const SITE_NAME = "MATRITSA";
+export const SITE_TAGLINE = "От идеи до готового решения.";
+export const SITE_URL = "https://matritsa.tech";
 
 export const CONTACTS = {
   person: "Илья Петров",
@@ -12,7 +12,7 @@ export const CONTACTS = {
 };
 
 export const NAV_ITEMS = [
-  { href: "/computer-help", label: "Компьютерная помощь" },
+  { href: "/computer-help", label: "IT поддержка организаций" },
   { href: "/3d-printing", label: "3D-печать" },
   { href: "/engineering", label: "Инженерные разработки" },
   { href: "/works", label: "Наши работы" },
