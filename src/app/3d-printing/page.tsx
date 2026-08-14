@@ -219,14 +219,30 @@ export default function PrintingPage() {
 
       <Section>
         <SectionTitle index={4}>О направлении</SectionTitle>
-        <StepList steps={steps} />
-        <p className="text-metal mt-3u max-w-prose">
+        <p className="text-metal max-w-prose mb-4u">
           Работаем по технологии FDM — послойное наплавление термопластика.
           Полный цикл: от разработки модели и подготовки к печати до
           изготовления готовых изделий, прототипирования и мелкосерийного
           производства. Подберём материал под задачу — по прочности,
           термостойкости, гибкости и внешнему виду.
         </p>
+        <ul className="grid gap-2u sm:grid-cols-2 lg:grid-cols-3 max-w-4xl">
+          {steps.map((step, index) => (
+            <li
+              key={index}
+              className="relative bg-surface border border-metal/20 rounded-card p-3u pl-4u"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute top-0 left-3u h-[2px] w-4u bg-accent"
+              />
+              <span className="font-mono text-accent text-xs block mb-1u">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="text-text-primary">{step}</span>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section>
