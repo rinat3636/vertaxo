@@ -9,9 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-2u">
           <Logo withTagline />
           <p className="text-metal text-sm">
-            Компьютерная помощь, 3D-печать и инженерные разработки. Выезд — в
-            Москве и Московской области, удалённо и с доставкой — по всей
-            России.
+            IT поддержка организаций, 3D-печать и моделирование, инженерные разработки. Выезды по Москве и по Московской области, а также поддержка удалённо. При заказе товаров доставка — по всей России.
           </p>
           <p className="text-metal text-sm">ИП Петров Илья</p>
         </div>
@@ -41,15 +39,15 @@ export function Footer() {
                 href={CONTACTS.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:underline"
+                className="text-accent hover:underline inline-flex items-center gap-2u"
               >
+                <img src="/images/telegram-logo.gif" alt="" className="h-6 w-6" />
                 Telegram
               </a>
             </li>
-            <li>
-              <a href={CONTACTS.maxPhoneHref} className="text-metal hover:text-text-primary">
-                MAX: {CONTACTS.maxPhone}
-              </a>
+            <li className="inline-flex items-center gap-2u text-metal/50">
+              <img src="/images/max-logo.svg" alt="" className="h-6 w-6 opacity-50" />
+              <span>MAX (скоро)</span>
             </li>
             <li className="text-metal/50" title="Ссылка появится позже">
               VK-канал (скоро)
@@ -64,7 +62,7 @@ export function Footer() {
       </div>
       <div className="border-t border-metal/20 py-2u">
         <p className="text-center text-metal text-sm">
-          © {new Date().getFullYear()} VERTAXO. Москва и Московская область — выезд, вся Россия — удалённо и с доставкой.
+          © {new Date().getFullYear()} matritsa. Выезды по Москве и Московской области, поддержка удалённо по всей России, доставка товаров — по всей России.
         </p>
       </div>
     </footer>

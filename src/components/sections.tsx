@@ -109,7 +109,7 @@ export function AboutSection() {
         <div className="relative">
           <h3 className="text-lg font-semibold mb-2u">Илья Петров</h3>
           <p className="text-metal max-w-prose">
-            Основатель VERTAXO. Больше 10 лет работает на стыке IT, инженерии
+            Основатель matrit<span className="text-accent">s</span>a. Больше 10 лет работает на стыке IT, инженерии
             и производства — от компьютерной помощи и защиты данных до
             проектирования и 3D-печати. Собственная команда объединяет три
             направления в одном месте, чтобы клиенту не приходилось искать
@@ -475,12 +475,13 @@ export function CtaBlock({
               variant="secondary"
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-0"
             >
-              Telegram
+              <img src="/images/telegram-logo.gif" alt="Telegram" className="h-8 w-8" />
             </ButtonLink>
-            <ButtonLink href={CONTACTS.maxPhoneHref} variant="secondary">
-              MAX: {CONTACTS.maxPhone}
-            </ButtonLink>
+            <div className="inline-flex items-center justify-center px-2u py-1u rounded-full border border-metal/20 bg-surface/50 opacity-50 cursor-not-allowed">
+              <img src="/images/max-logo.svg" alt="MAX (скоро)" className="h-8 w-8" />
+            </div>
           </div>
         </div>
           <LeadForm source={source} />

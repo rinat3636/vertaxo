@@ -16,10 +16,24 @@ import {
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "3D-печать и 3D-моделирование на заказ с доставкой по России | VERTAXO",
+  title: "3D-печать и 3D-моделирование на заказ в Москве | matritsa",
   description:
     "3D-печать и 3D-моделирование на заказ с доставкой по всей России: разработка моделей, прототипирование, мелкосерийное производство FDM. Качественные изделия — оставьте заявку.",
   alternates: { canonical: `${SITE_URL}/3d-printing` },
+  openGraph: {
+    title: "3D-печать и 3D-моделирование на заказ в Москве",
+    description:
+      "Разработка 3D-моделей, прототипирование, мелкосерийное производство FDM. Доставка по всей России.",
+    url: `${SITE_URL}/3d-printing`,
+    images: [
+      {
+        url: "/images/3d-printing.webp",
+        width: 1024,
+        height: 1536,
+        alt: "3D-печать на заказ matritsa",
+      },
+    ],
+  },
 };
 
 const services = [
@@ -47,6 +61,11 @@ const services = [
     title: "Мелкосерийное производство",
     description: "Партии деталей без затрат на литьевые формы.",
     icon: "batch",
+  },
+  {
+    title: "Реверс инжиниринг",
+    description: "По образцу заказчика.",
+    icon: "prototype",
   },
 ] as const;
 
@@ -121,7 +140,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "3D-печать и 3D-моделирование на заказ",
-  provider: { "@type": "LocalBusiness", name: "VERTAXO", url: SITE_URL },
+  provider: { "@type": "LocalBusiness", name: "matritsa", url: SITE_URL },
   areaServed: "Россия",
   serviceType: "3D-печать",
 };
@@ -135,7 +154,7 @@ export default function PrintingPage() {
       />
       <Hero
         title="3D-моделирование и 3D-печать"
-        subtitle="Качественные изделия. Разработка индивидуальных моделей"
+        subtitle="Качественные изделия. Разработка индивидуальных моделей, реверс инжиниринг и изготовление деталей из пластика и металла"
         image="/images/3d-printing.webp"
         imageAlt="Крупный план сопла 3D-принтера, печатающего механическую деталь, голубая подсветка"
         tag="3D-ПЕЧАТЬ"
@@ -179,28 +198,25 @@ export default function PrintingPage() {
         <SectionTitle index={6}>Наше оборудование</SectionTitle>
         <ul className="grid gap-2u sm:grid-cols-2 text-metal max-w-prose list-disc pl-2u marker:text-accent-secondary mb-3u">
           <li>FDM-принтеры с подогреваемым столом</li>
-          <li>Закрытая камера для термостойких пластиков</li>
+          <li>Закрытая подогреваемая камера для термостойких пластиков</li>
+          <li>Многоцветная печать</li>
           <li>Печать по нескольким материалам (PLA, PETG, ABS, TPU)</li>
           <li>Постобработка и контроль качества готовых изделий</li>
         </ul>
         <div className="grid gap-2u sm:grid-cols-3 max-w-2xl mb-2u">
-          {["Принтер №1", "Принтер №2", "Принтер №3"].map((placeholder) => (
-            <div
-              key={placeholder}
-              className="rounded-card border border-dashed border-metal/30 bg-surface/50 px-2u py-2u"
-            >
-              <div className="font-mono text-metal text-sm">{placeholder}</div>
-              <div className="text-metal/60 text-xs mt-1u">
-                модель уточняется
-              </div>
-            </div>
-          ))}
+          <div className="rounded-lg border border-metal/20 bg-surface px-3u py-2u">
+            <div className="font-mono text-accent text-sm mb-1u">Принтер 1</div>
+            <div className="text-metal text-sm">Bambu lab P1S</div>
+          </div>
+          <div className="rounded-lg border border-metal/20 bg-surface px-3u py-2u">
+            <div className="font-mono text-accent text-sm mb-1u">Принтер 2</div>
+            <div className="text-metal text-sm">Bambu lab H2C</div>
+          </div>
+          <div className="rounded-lg border border-metal/20 bg-surface px-3u py-2u">
+            <div className="font-mono text-accent text-sm mb-1u">Принтер 3</div>
+            <div className="text-metal text-sm">Bambu lab X2D</div>
+          </div>
         </div>
-        <p className="text-metal text-sm max-w-prose">
-          Точный список моделей оборудования и характеристик публикуется после
-          согласования с владельцем — уточните возможности под вашу задачу
-          через форму заявки.
-        </p>
       </Section>
 
       <Section>

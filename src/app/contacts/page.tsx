@@ -3,9 +3,9 @@ import { Section, CtaBlock, PageHeader } from "@/components/sections";
 import { CONTACTS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Контакты | VERTAXO",
+  title: "Контакты | MATRITSA",
   description:
-    "Свяжитесь с VERTAXO: Telegram, телефон, форма обратной связи. Компьютерная помощь, 3D-печать и инженерные разработки по всей России.",
+    "Свяжитесь с MATRITSA: Telegram, телефон, форма обратной связи. Компьютерная помощь, 3D-печать и инженерные разработки по всей России.",
   alternates: { canonical: `${SITE_URL}/contacts` },
 };
 
@@ -41,8 +41,9 @@ export default function ContactsPage() {
               href={CONTACTS.telegram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:underline font-semibold text-lg"
+              className="text-accent hover:underline font-semibold text-lg flex items-center gap-2u"
             >
+              <img src="/images/telegram-logo.gif" alt="Telegram" className="h-8 w-8" />
               @Ilya_petrov9988
             </a>
           </li>
@@ -54,12 +55,10 @@ export default function ContactsPage() {
             <span className="font-mono text-metal/60 text-xs uppercase tracking-widest block mb-1u">
               MAX
             </span>
-            <a
-              href={CONTACTS.maxPhoneHref}
-              className="font-semibold text-lg hover:text-accent transition-colors duration-150"
-            >
-              {CONTACTS.maxPhone}
-            </a>
+            <div className="font-semibold text-lg flex items-center gap-2u">
+              <img src="/images/max-logo.svg" alt="MAX" className="h-8 w-8" />
+              <span className="text-metal/50 text-sm">(скоро)</span>
+            </div>
           </li>
         </ul>
       </Section>
