@@ -17,6 +17,5 @@ export const NAV_ITEMS = [
   { href: "/engineering", label: "Инженерные разработки" },
   { href: "/works", label: "Наши работы" },
   { href: "/reviews", label: "Отзывы" },
-  { href: "/shop", label: "Магазин" },
   { href: "/contacts", label: "Контакты" },
 ] as const;
