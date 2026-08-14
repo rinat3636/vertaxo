@@ -195,7 +195,7 @@ export default function PrintingPage() {
       <Hero
         title="3D-моделирование и 3D-печать"
         subtitle="Качественные изделия. Разработка индивидуальных моделей, реверс инжиниринг и изготовление деталей из пластика и металла"
-        image="/images/3d-printing.webp"
+        image="/images/3d-printing-v2.webp"
         imageAlt="Крупный план сопла 3D-принтера, печатающего механическую деталь, голубая подсветка"
         tag="3D-ПЕЧАТЬ"
         stats={stats}

@@ -141,7 +141,7 @@ export default function EngineeringPage() {
       <Hero
         title="Инженерные разработки"
         subtitle="Создание новых технических решений под задачи заказчика — от идеи до готового решения"
-        image="/images/engineering.webp"
+        image="/images/engineering-v2.webp"
         imageAlt="Ноутбук с 3D-моделью детали в CAD-программе, рядом чертёж и штангенциркуль на столе инженера"
         tag="ИНЖЕНЕРНЫЕ РАЗРАБОТКИ"
         stats={stats}
