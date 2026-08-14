@@ -43,7 +43,7 @@ const services = [
       "Поддержка пользователей, администрирование серверов, информационная безопасность и 1С.",
     href: "/computer-help",
     image: "/images/computer-help-v2.webp",
-    imageMobile: "/images/computer-help-card.webp",
+    imageMobile: "/images/computer-help-mobile.webp",
     imageAlt:
       "Монитор с панелью сетевой безопасности в тёмном серверном помещении, голубая подсветка",
   },
@@ -52,7 +52,7 @@ const services = [
     description: "Проектирование, прототипирование и изготовление деталей.",
     href: "/3d-printing",
     image: "/images/3d-printing-v2.webp",
-    imageMobile: "/images/3d-printing-card.webp",
+    imageMobile: "/images/3d-printing-mobile.webp",
     imageAlt:
       "3D-принтер печатает прецизионную механическую деталь в тёмной мастерской, голубая подсветка",
   },
@@ -61,7 +61,7 @@ const services = [
     description: "Создание новых технических решений под задачи заказчика.",
     href: "/engineering",
     image: "/images/engineering-v2.webp",
-    imageMobile: "/images/engineering-card.webp",
+    imageMobile: "/images/engineering-mobile.webp",
     imageAlt:
       "Ноутбук с 3D-моделью детали в CAD-программе, рядом чертёж и штангенциркуль на столе инженера",
   },

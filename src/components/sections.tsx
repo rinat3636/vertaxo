@@ -180,9 +180,9 @@ export function ServiceBanners({
     <div className="flex flex-col gap-2u sm:gap-3u">
       {items.map((item, i) => (
         <Link key={item.href} href={item.href} className="group block">
-          <article className="relative grid grid-cols-[96px_1fr] sm:grid-cols-1 lg:grid-cols-2 items-stretch rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60">
+          <article className="relative grid grid-cols-1 lg:grid-cols-2 items-stretch rounded-card overflow-hidden border border-metal/20 transition-all duration-300 ease-out group-hover:border-accent/60">
             <div
-              className={`relative min-h-full sm:min-h-[180px] lg:min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
+              className={`relative aspect-[2/3] sm:aspect-[2/1] lg:aspect-auto lg:min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
             >
               <Image
                 src={item.image}
@@ -191,22 +191,21 @@ export function ServiceBanners({
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="hidden sm:block object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
-              {item.imageMobile && (
+              {item.imageMobile ? (
                 <Image
                   src={item.imageMobile}
                   alt={item.imageAlt}
                   fill
-                  sizes="96px"
+                  sizes="100vw"
                   className="sm:hidden object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                 />
-              )}
-              {!item.imageMobile && (
+              ) : (
                 <Image
                   src={item.image}
                   alt={item.imageAlt}
                   fill
-                  sizes="(max-width: 640px) 96px, (max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                  sizes="100vw"
+                  className="sm:hidden object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                 />
               )}
               <span
@@ -216,11 +215,11 @@ export function ServiceBanners({
                 {`// 0${i + 1}`}
               </span>
             </div>
-            <div className="relative flex flex-col justify-center bg-surface p-2u sm:p-3u lg:p-4u">
+            <div className="relative flex flex-col justify-center bg-surface text-primary max-lg:bg-[var(--color-text-primary)] max-lg:text-bg p-2u sm:p-3u lg:p-4u">
               <h3 className="font-semibold text-base sm:text-2xl mb-1u sm:mb-2u">
                 {item.title}
               </h3>
-              <p className="text-metal text-sm sm:text-base mb-1u sm:mb-3u max-w-prose">
+              <p className="text-metal max-lg:text-bg/70 text-sm sm:text-base mb-1u sm:mb-3u max-w-prose">
                 {item.description}
               </p>
               <span className="inline-flex items-center gap-1u text-accent text-xs sm:text-sm font-semibold w-fit transition-transform duration-300 ease-out group-hover:translate-x-1u">
