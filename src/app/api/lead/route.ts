@@ -1,39 +1,19 @@
 import { NextResponse } from "next/server";
 import { getSanityWriteClient } from "@/lib/sanity";
+import { readChatIds, sendTelegramMessage, sendTelegramDocument } from "@/lib/telegram";
 
-type LeadPayload = {
-  name?: string;
-  contact?: string;
-  message?: string;
-  source?: string;
-};
-
-async function sendTelegram(text: string): Promise<boolean> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) return false;
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text }),
-    });
-    return res.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function saveToSanity(lead: Required<LeadPayload>): Promise<boolean> {
+async function saveToSanity(lead: {
+  name: string;
+  contact: string;
+  message: string;
+  source: string;
+}): Promise<boolean> {
   const client = getSanityWriteClient();
   if (!client) return false;
   try {
     await client.create({
       _type: "lead",
-      name: lead.name,
-      contact: lead.contact,
-      message: lead.message,
-      source: lead.source,
+      ...lead,
       createdAt: new Date().toISOString(),
     });
     return true;
@@ -43,17 +23,18 @@ async function saveToSanity(lead: Required<LeadPayload>): Promise<boolean> {
 }
 
 export async function POST(request: Request) {
-  let payload: LeadPayload;
+  console.log("Lead request received at", new Date().toISOString());
+  let formData: FormData;
   try {
-    payload = (await request.json()) as LeadPayload;
+    formData = await request.formData();
   } catch {
     return NextResponse.json({ error: "Некорректный запрос" }, { status: 400 });
   }
 
-  const name = (payload.name ?? "").trim();
-  const contact = (payload.contact ?? "").trim();
-  const message = (payload.message ?? "").trim();
-  const source = (payload.source ?? "unknown").trim();
+  const name    = String(formData.get("name")    ?? "").trim();
+  const contact = String(formData.get("contact") ?? "").trim();
+  const message = String(formData.get("message") ?? "").trim();
+  const source  = String(formData.get("source")  ?? "unknown").trim();
 
   if (!name || !contact) {
     return NextResponse.json(
@@ -62,20 +43,46 @@ export async function POST(request: Request) {
     );
   }
 
+  const files: File[] = formData
+    .getAll("files")
+    .filter((v): v is File => v instanceof File && v.size > 0);
+
+  const subscribers = await readChatIds();
+
   const text = [
-    "Новая заявка с сайта MATRITSA",
-    `Страница: ${source}`,
-    `Имя: ${name}`,
-    `Контакт: ${contact}`,
-    message ? `Сообщение: ${message}` : null,
+    "📋 Новая заявка с сайта MATRITSA",
+    `📄 Страница: ${source}`,
+    `👤 Имя: ${name}`,
+    `📞 Контакт: ${contact}`,
+    message ? `💬 Сообщение: ${message}` : null,
+    files.length > 0 ? `📎 Файлов: ${files.length}` : null,
   ]
     .filter(Boolean)
     .join("\n");
 
-  const [telegramOk, sanityOk] = await Promise.all([
-    sendTelegram(text),
-    saveToSanity({ name, contact, message, source }),
-  ]);
+  let telegramOk = false;
+
+  console.log("Subscribers:", subscribers);
+  console.log("Bot token present:", !!process.env.TELEGRAM_BOT_TOKEN);
+  
+  if (subscribers.length > 0) {
+    console.log("Sending to", subscribers.length, "subscribers");
+    const results = await Promise.allSettled(
+      subscribers.map(chatId => sendTelegramMessage(chatId, text))
+    );
+    telegramOk = results.some(r => r.status === "fulfilled" && r.value);
+
+    if (files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const caption = i === 0 ? `Файл от ${name} (${source})` : undefined;
+        await Promise.allSettled(
+          subscribers.map(chatId => sendTelegramDocument(chatId, files[i], caption))
+        );
+      }
+    }
+  }
+
+  const sanityOk = await saveToSanity({ name, contact, message, source });
 
   if (!telegramOk && !sanityOk) {
     console.error("Lead delivery failed", { source, name, contact });

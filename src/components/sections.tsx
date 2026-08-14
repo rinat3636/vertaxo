@@ -283,20 +283,26 @@ export function StatGrid({
 
 export function StepList({ steps }: { steps: readonly string[] }) {
   return (
-    <ol className="grid grid-cols-2 gap-2u sm:gap-3u lg:grid-cols-5">
+    <ol className="relative flex flex-col gap-0">
       {steps.map((step, i) => (
-        <li
-          key={step}
-          className={`relative bg-surface border border-metal/20 rounded-card p-2u sm:p-3u ${
-            i < steps.length - 1
-              ? "after:content-['→'] after:absolute after:top-3u after:-right-[22px] after:text-accent-secondary after:hidden lg:after:block"
-              : ""
-          }`}
-        >
-          <span className="font-mono text-accent-secondary font-bold block mb-1u text-sm sm:text-base">
-            {String(i + 1).padStart(2, "0")}
-          </span>
-          <span className="text-xs sm:text-sm">{step}</span>
+        <li key={step} className="relative flex gap-3u items-start group">
+          {/* Vertical connector line */}
+          {i < steps.length - 1 && (
+            <span
+              aria-hidden="true"
+              className="absolute left-[19px] top-[40px] bottom-0 w-px bg-gradient-to-b from-accent-secondary/60 to-accent/20"
+            />
+          )}
+          {/* Step number circle */}
+          <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full border border-accent-secondary/50 bg-bg flex items-center justify-center">
+            <span className="font-mono text-accent-secondary font-bold text-xs">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+          </div>
+          {/* Step text */}
+          <div className="pb-4u pt-[10px]">
+            <span className="text-sm sm:text-base text-text-primary">{step}</span>
+          </div>
         </li>
       ))}
     </ol>

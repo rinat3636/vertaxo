@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Metrika } from "@/components/Metrika";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { AboutSection } from "@/components/sections";
+import { FloatingContact } from "@/components/FloatingContact";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 const unbounded = Unbounded({
@@ -109,6 +110,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AboutSection />
         <Footer />
         <Metrika />
+        <FloatingContact />
       </body>
     </html>
   );

@@ -45,12 +45,27 @@ export function Footer() {
                 Telegram
               </a>
             </li>
-            <li className="inline-flex items-center gap-2u text-metal/50">
-              <img src="/images/max-logo.svg" alt="" className="h-6 w-6 opacity-50" />
-              <span>MAX (скоро)</span>
+            <li>
+              <a
+                href={CONTACTS.maxUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline inline-flex items-center gap-2u"
+              >
+                <img src="/max-icon.png" alt="" className="h-6 w-6" />
+                MAX
+              </a>
             </li>
-            <li className="text-metal/50" title="Ссылка появится позже">
-              VK-канал (скоро)
+            <li>
+              <a
+                href={CONTACTS.vk}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline inline-flex items-center gap-2u"
+              >
+                <img src="/vk-icon.png" alt="" className="h-6 w-6" />
+                VK
+              </a>
             </li>
             <li>
               <Link href="/privacy" className="text-metal hover:text-text-primary">

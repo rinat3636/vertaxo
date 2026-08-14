@@ -7,8 +7,8 @@ export const CONTACTS = {
   telegram: "https://t.me/Ilya_petrov9988",
   maxPhone: "+7 962 362 99 88",
   maxPhoneHref: "tel:+79623629988",
-  // Ссылка на VK-канал не предоставлена (SPEC.md, открытый вопрос №7).
-  // vkChannel: "https://vk.com/...",
+  maxUrl: "https://max.ru/u/f9LHodD0cOJgA8s1qKXxPNgMJ0-1NI7h4ID4lFtKh36xNenlk1Wnr5bkNfU",
+  vk: "https://vk.com/club198005108",
 };
 
 export const NAV_ITEMS = [
