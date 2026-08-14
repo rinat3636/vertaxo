@@ -44,8 +44,8 @@ export function Hero({
   const isLongTitle = title.length > 70;
   return (
     <div className="border-b border-metal/20 bg-surface/40">
-      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-2u lg:py-3u">
-        <div className="relative border-y sm:border border-metal/30 sm:rounded-card overflow-hidden">
+      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-1u sm:py-2u lg:py-3u min-h-[calc(100svh-56px)] lg:min-h-[calc(100svh-64px)] flex flex-col">
+        <div className="relative flex-1 flex flex-col border-y sm:border border-metal/30 sm:rounded-card overflow-hidden">
           {/* console title bar */}
           <div className="relative z-10 flex items-center justify-between gap-2u border-b border-metal/30 bg-bg px-2u py-1u font-mono text-[11px] tracking-wider text-metal">
             <span className="flex items-center gap-1u">
@@ -57,12 +57,12 @@ export function Hero({
             </span>
           </div>
 
-          <div className="relative grid lg:grid-cols-[1.1fr_1fr]">
+          <div className="relative flex-1 min-h-0 grid lg:grid-cols-[1.1fr_1fr]">
             {/* readout panel */}
-            <div className="relative z-10 px-2u py-3u sm:px-3u lg:p-4u flex flex-col justify-center">
+            <div className="relative z-10 px-2u py-2u sm:py-3u sm:px-3u lg:p-4u flex flex-col justify-center overflow-y-auto">
               <ScanlineGrid />
               <div className="relative border-l-2 border-accent pl-2u sm:pl-3u">
-                <p className="font-mono text-accent text-sm mb-1u tracking-widest lowercase">
+                <p className="font-mono text-accent text-xs sm:text-sm mb-1u tracking-widest lowercase">
                   {"// matrit"}
                   <span className="text-accent">s</span>
                   {"a"}
@@ -70,13 +70,13 @@ export function Hero({
                 <h1
                   className={`font-bold leading-[1.15] md:leading-[1.1] mb-2u break-words ${
                     isLongTitle
-                      ? "text-xl sm:text-2xl md:text-3xl"
-                      : "text-2xl sm:text-3xl md:text-4xl"
+                      ? "text-lg sm:text-xl md:text-2xl lg:text-3xl"
+                      : "text-xl sm:text-2xl md:text-3xl lg:text-4xl"
                   }`}
                 >
                   {title}
                 </h1>
-                <p className="text-metal text-sm sm:text-base md:text-lg max-w-2xl mb-3u">
+                <p className="text-metal text-sm sm:text-base md:text-lg max-w-2xl mb-2u sm:mb-3u">
                   {subtitle}
                 </p>
                 {actions && (
@@ -86,7 +86,7 @@ export function Hero({
             </div>
 
             {/* viewfinder panel */}
-            <div className="relative min-h-[200px] lg:min-h-[300px] border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
+            <div className="relative min-h-[140px] sm:min-h-[180px] max-h-[38vh] lg:max-h-none lg:h-full border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
               <Image
                 src={image}
                 alt={imageAlt}
@@ -137,12 +137,12 @@ export function Hero({
               {stats.slice(0, 4).map((s) => (
                 <div
                   key={s.label}
-                  className="px-2u py-2u border-r border-metal/20 last:border-r-0"
+                  className="px-2u py-1u sm:py-2u border-r border-metal/20 last:border-r-0"
                 >
-                  <div className="font-mono font-bold text-accent text-lg leading-none">
+                  <div className="font-mono font-bold text-accent text-base sm:text-lg leading-none">
                     {s.value}
                   </div>
-                  <div className="text-metal text-[11px] uppercase tracking-wide mt-1u">
+                  <div className="text-metal text-[10px] sm:text-[11px] uppercase tracking-wide mt-1u">
                     {s.label}
                   </div>
                 </div>
