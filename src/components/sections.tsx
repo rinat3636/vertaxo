@@ -172,6 +172,7 @@ export function ServiceBanners({
     description: string;
     href: string;
     image: string;
+    imageMobile?: string;
     imageAlt: string;
   }[];
 }) {
@@ -187,9 +188,27 @@ export function ServiceBanners({
                 src={item.image}
                 alt={item.imageAlt}
                 fill
-                sizes="(max-width: 640px) 96px, (max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="hidden sm:block object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
+              {item.imageMobile && (
+                <Image
+                  src={item.imageMobile}
+                  alt={item.imageAlt}
+                  fill
+                  sizes="96px"
+                  className="sm:hidden object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                />
+              )}
+              {!item.imageMobile && (
+                <Image
+                  src={item.image}
+                  alt={item.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 96px, (max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                />
+              )}
               <span
                 aria-hidden="true"
                 className="hidden sm:block absolute top-2u left-2u font-mono text-xs tracking-widest text-accent bg-bg/70 border border-accent/30 rounded-card px-1u py-[2px]"
