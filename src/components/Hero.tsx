@@ -44,7 +44,7 @@ export function Hero({
   const isLongTitle = title.length > 70;
   return (
     <div className="border-b border-metal/20 bg-surface/40">
-      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-1u sm:py-2u lg:py-3u min-h-[calc(100svh-56px)] lg:min-h-[calc(100svh-64px)] flex flex-col">
+      <div className="mx-auto max-w-7xl px-0 sm:px-2u py-0 sm:py-2u lg:py-3u min-h-[calc(100svh-56px)] lg:min-h-[calc(100svh-64px)] flex flex-col">
         <div className="relative flex-1 flex flex-col border-y sm:border border-metal/30 sm:rounded-card overflow-hidden">
           {/* console title bar */}
           <div className="relative z-10 flex items-center justify-between gap-2u border-b border-metal/30 bg-bg px-2u py-1u font-mono text-[11px] tracking-wider text-metal">
@@ -68,10 +68,10 @@ export function Hero({
                   {"a"}
                 </p>
                 <h1
-                  className={`font-bold leading-[1.15] md:leading-[1.1] mb-2u break-words ${
+                  className={`font-bold leading-[1.1] md:leading-[1.1] mb-2u break-words ${
                     isLongTitle
-                      ? "text-lg sm:text-xl md:text-2xl lg:text-3xl"
-                      : "text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+                      ? "text-base sm:text-lg md:text-2xl lg:text-3xl"
+                      : "text-lg sm:text-2xl md:text-3xl lg:text-4xl"
                   }`}
                 >
                   {title}
@@ -86,7 +86,7 @@ export function Hero({
             </div>
 
             {/* viewfinder panel */}
-            <div className="relative min-h-[140px] sm:min-h-[180px] max-h-[38vh] lg:max-h-none lg:h-full border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
+            <div className="relative min-h-[140px] sm:min-h-[180px] max-h-[30vh] sm:max-h-[35vh] lg:max-h-none lg:h-full border-t lg:border-t-0 lg:border-l border-metal/30 overflow-hidden">
               <Image
                 src={image}
                 alt={imageAlt}
